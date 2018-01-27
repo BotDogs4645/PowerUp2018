@@ -1,14 +1,11 @@
 package org.usfirst.frc.team4645.robot.subsystems;
 
+import org.usfirst.frc.team4645.robot.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4645.robot.*;
-import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
-/**
- *
- */
+
 public class Pneumatics extends Subsystem {
 
     // Put methods for controlling this subsystem
