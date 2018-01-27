@@ -1,4 +1,6 @@
 package org.usfirst.frc.team4645.robot;
+import org.usfirst.frc.team4645.robot.subsystems.ClimbingSubsystem;
+import org.usfirst.frc.team4645.robot.subsystems.IntakeSystem;
 import org.usfirst.frc.team4645.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team4645.robot.subsystems.TankDrive;
 
@@ -20,6 +22,10 @@ public class Robot extends IterativeRobot
 	
 	public static final Pneumatics pneumaticsSubsystem= new Pneumatics();
 	public static final TankDrive tankDriveSubsystem = new TankDrive();
+	public static final IntakeSystem kIntakeSystem= new IntakeSystem();
+	public static final ClimbingSubsystem climbingSystem= new ClimbingSubsystem();
+
+
 	public static OI oi;
 
 	Command autonomousCommand;

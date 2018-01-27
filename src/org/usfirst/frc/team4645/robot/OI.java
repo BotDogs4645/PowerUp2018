@@ -10,6 +10,11 @@ package org.usfirst.frc.team4645.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
+import org.usfirst.frc.team4645.robot.commands.ClimbCommandDown;
+import org.usfirst.frc.team4645.robot.commands.ClimbCommandUp;
+import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
+import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
 import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
 
 /**
@@ -23,9 +28,25 @@ public class OI
 //pneumatics button
 	Button button = new JoystickButton(joystick1,3);
 	
+	Button buttonIntake = new JoystickButton(joystick1,5);
+	Button buttonOuttake = new JoystickButton(joystick1,6);
+	
+	Button buttonClimbUp = new JoystickButton(joystick1,7);
+	Button buttonClimbDown = new JoystickButton(joystick1,8);
+
+	
+	
 	public OI()
 	{
 		button.whileHeld(new PneumaticsCommandIn());
+		
+		
+		buttonIntake.whileHeld(new IntakeCommand());
+		buttonOuttake.whileHeld(new OuttakeCommand());
+		
+		buttonClimbUp.whileHeld(new ClimbCommandUp());
+		buttonClimbDown.whileHeld(new ClimbCommandDown());
+		
 	}
 
 	

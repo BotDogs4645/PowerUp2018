@@ -26,6 +26,25 @@ public class RobotMap
 	public static int left3 = 3;
 	public static int right1 = 4;
 	public static int right2 = 5;
-	public static int right3 = 6;	
+	public static int right3 = 6;
+	
+	
+//intake motors
+	public static int intake1 = 12;	
+	public static int intake2 = 13;	
+	
+
+//climb motors
+	public static int climb1 = 10;	
+	public static int climb2 = 11;	
+
+
+
+	
+	
+	
+	
+	
+	
 
 }
