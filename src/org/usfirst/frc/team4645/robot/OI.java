@@ -10,8 +10,6 @@ package org.usfirst.frc.team4645.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
-import org.usfirst.frc.team4645.robot.commands.GreaseGears;
 import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
 
 /**
@@ -20,20 +18,14 @@ import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
  */
 public class OI
 {
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
+//creates joytick object
 	public static Joystick joystick1 = new Joystick(1);
-	
+//pneumatics button
 	Button button = new JoystickButton(joystick1,3);
-	Button button11 = new JoystickButton(joystick1,11);
 	
 	public OI()
 	{
 		button.whileHeld(new PneumaticsCommandIn());
-		button11.whileHeld(new GreaseGears());
 	}
 
 	
