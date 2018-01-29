@@ -8,22 +8,22 @@ public class DriveCommand extends Command
 
     public DriveCommand() 
     {
-    		requires(Robot.tankDriveSubsystem);
+        requires(Robot.tankDriveSubsystem);
     }
 
     protected void initialize() 
     {
-    		Robot.tankDriveSubsystem.init();
+        Robot.tankDriveSubsystem.init();
     }
 
     protected void execute() 
     {	
-    		Robot.tankDriveSubsystem.driveWithJoystick();
+        Robot.tankDriveSubsystem.driveWithJoystick();
     }
 
     protected boolean isFinished() 
     {
-    		return false;
+        return false;
     }
 
     protected void end() 
@@ -33,6 +33,6 @@ public class DriveCommand extends Command
 
     protected void interrupted() 
     {
-    		Robot.tankDriveSubsystem.stop();	
+        Robot.tankDriveSubsystem.stop();	
     }
 }
