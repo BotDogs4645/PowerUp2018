@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class TankDrive extends Subsystem 
 {
 
-//all motors are assigned to either left or right gearbox	
+	//all motors are assigned to either left or right gearbox	
 	public WPI_TalonSRX motorL1 = new WPI_TalonSRX(RobotMap.left1);
 	public WPI_TalonSRX motorL2 = new WPI_TalonSRX(RobotMap.left2);
 	public  WPI_TalonSRX motorL3 = new WPI_TalonSRX(RobotMap.left3);
@@ -20,7 +20,7 @@ public class TankDrive extends Subsystem
 	public WPI_TalonSRX motorR2 = new WPI_TalonSRX(RobotMap.right2);
 	public WPI_TalonSRX motorR3 = new WPI_TalonSRX(RobotMap.right3);
 	
-//robotDrive only assigned to motorL1 & motorR1
+	//robotDrive only assigned to motorL1 & motorR1
 	DifferentialDrive robotDrive = new DifferentialDrive(motorL1, motorR1);
 
     public void initDefaultCommand() 
@@ -31,7 +31,7 @@ public class TankDrive extends Subsystem
     
     public void init()
     {
-    	//motors on "middle" gear are slaved and inverted with motor on "top" gear
+    		//motors on "middle" gear are slaved and inverted with motor on "top" gear
 		motorL2.follow(motorL1);
 		motorL3.follow(motorL1);
 		motorL2.setInverted(true);

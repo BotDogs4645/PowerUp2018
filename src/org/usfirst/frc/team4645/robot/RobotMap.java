@@ -16,11 +16,11 @@ package org.usfirst.frc.team4645.robot;
 public class RobotMap 
 {
 
-//pneumatics
+	//pneumatics
 	public static int leftPistonIn = 1;
 	public static int leftPistonOut =2;
 
-//tank drive motors
+	//tank drive motors
 	public static int left1 = 1;
 	public static int left2 = 2;
 	public static int left3 = 3;

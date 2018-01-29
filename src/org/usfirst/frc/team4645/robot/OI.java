@@ -18,9 +18,10 @@ import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
  */
 public class OI
 {
-//creates joytick object
+	//creates joytick object
 	public static Joystick joystick1 = new Joystick(1);
-//pneumatics button
+	
+	//pneumatics button
 	Button button = new JoystickButton(joystick1,3);
 	
 	public OI()
