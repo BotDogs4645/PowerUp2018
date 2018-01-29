@@ -20,7 +20,7 @@ public class TankDrive extends Subsystem
 	public WPI_TalonSRX motorR2 = new WPI_TalonSRX(RobotMap.right2);
 	public WPI_TalonSRX motorR3 = new WPI_TalonSRX(RobotMap.right3);
 	
-	//robotDrive only assigned to motorL1 & motorR1 test
+	//robotDrive only assigned to motorL1 & motorR1 
 	DifferentialDrive robotDrive = new DifferentialDrive(motorL1, motorR1);
 
     public void initDefaultCommand() 
