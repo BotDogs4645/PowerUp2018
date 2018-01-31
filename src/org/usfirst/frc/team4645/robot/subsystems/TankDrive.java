@@ -23,15 +23,15 @@ public class TankDrive extends Subsystem
 //robotDrive only assigned to motorL1 & motorR1
 	DifferentialDrive robotDrive = new DifferentialDrive(motorL1, motorR1);
 
-    public void initDefaultCommand() 
-    {
+	public void initDefaultCommand() 
+	{
 
-    		setDefaultCommand(new DriveCommand());
-    }
-    
-    public void init()
-    {
-    	//motors on "middle" gear are slaved and inverted with motor on "top" gear
+			setDefaultCommand(new DriveCommand());
+	}
+	
+	public void init()
+	{
+		//motors on "middle" gear are slaved and inverted with motor on "top" gear
 		motorL2.follow(motorL1);
 		motorL3.follow(motorL1);
 		motorL2.setInverted(true);
@@ -41,10 +41,13 @@ public class TankDrive extends Subsystem
 		motorR3.follow(motorR1);
 		motorR2.setInverted(true);
 		motorR3.setInverted(true);
-    }
-    
-    public void driveWithJoystick()
-    {
+		
+		
+		
+	}
+	
+	public void driveWithJoystick()
+	{
 		double forward = OI.joystick1.getY();
 		double turn = OI.joystick1.getZ();
 
@@ -64,15 +67,28 @@ public class TankDrive extends Subsystem
 		SmartDashboard.putNumber("JoyY:",  forward);
 		SmartDashboard.putNumber("Turn", turn);		
 	
-		robotDrive.arcadeDrive(forward, turn);		
+		robotDrive.arcadeDrive(forward, turn);
+		
+		
 	}
-  
-    	
-    public void stop()
-    {
+	
+	public void move(double speed) {
+		motorL1.set(speed);
+
+		
+		motorR1.set(speed);
+		
+
+	}
+	
+	
+	
+	
+	public void stop()
+	{
 		motorL1.set(0);
 		motorR1.set(0);
 
 	}
-    
+	
 }

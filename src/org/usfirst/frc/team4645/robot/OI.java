@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandDown;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandUp;
 import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
+import org.usfirst.frc.team4645.robot.commands.MoveWithUltrasonic;
 import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
 import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
 
@@ -46,6 +47,8 @@ public class OI
 		
 		buttonClimbUp.whileHeld(new ClimbCommandUp());
 		buttonClimbDown.whileHeld(new ClimbCommandDown());
+		
+		button.whenPressed(new MoveWithUltrasonic());
 		
 	}
 

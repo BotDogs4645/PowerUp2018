@@ -21,7 +21,7 @@ public class RobotMap
 	public static int leftPistonOut =2;
 
 //tank drive motors
-	public static int left1 = 1;
+	public static int left1 = 10;
 	public static int left2 = 2;
 	public static int left3 = 3;
 	public static int right1 = 4;
@@ -38,7 +38,10 @@ public class RobotMap
 	public static int climb1 = 10;	
 	public static int climb2 = 11;	
 
-
+//Analog Ports
+	
+	public static int ultrasonicChannel = 1;
+	
 
 	
 	

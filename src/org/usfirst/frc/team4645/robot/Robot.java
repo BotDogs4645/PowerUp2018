@@ -3,6 +3,7 @@ import org.usfirst.frc.team4645.robot.subsystems.ClimbingSubsystem;
 import org.usfirst.frc.team4645.robot.subsystems.IntakeSystem;
 import org.usfirst.frc.team4645.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team4645.robot.subsystems.TankDrive;
+import org.usfirst.frc.team4645.robot.subsystems.UltrasonicSensor;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -30,7 +31,11 @@ public class Robot extends IterativeRobot
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	
+	
+	public static final UltrasonicSensor kUltrasonic = new UltrasonicSensor();
 
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
