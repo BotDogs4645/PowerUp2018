@@ -1,10 +1,12 @@
 package org.usfirst.frc.team4645.robot;
 import org.usfirst.frc.team4645.robot.subsystems.ClimbingSubsystem;
+import org.usfirst.frc.team4645.robot.subsystems.ColorSensor;
 import org.usfirst.frc.team4645.robot.subsystems.IntakeSystem;
 import org.usfirst.frc.team4645.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team4645.robot.subsystems.TankDrive;
 import org.usfirst.frc.team4645.robot.subsystems.UltrasonicSensor;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -20,20 +22,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot 
 {
+
 	
 	public static final Pneumatics pneumaticsSubsystem= new Pneumatics();
 	public static final TankDrive tankDriveSubsystem = new TankDrive();
 	public static final IntakeSystem kIntakeSystem= new IntakeSystem();
 	public static final ClimbingSubsystem climbingSystem= new ClimbingSubsystem();
-
-
+	public static final ColorSensor kColorSensor = new ColorSensor();
+	public static final UltrasonicSensor kUltrasonic = new UltrasonicSensor();
+	
+	
 	public static OI oi;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
 	
-	public static final UltrasonicSensor kUltrasonic = new UltrasonicSensor();
+	
 
 	
 	/**

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4645.robot.subsystems;
 
 import org.usfirst.frc.team4645.robot.RobotMap;
+import org.usfirst.frc.team4645.robot.commands.DetectDistance;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -27,7 +28,7 @@ public class UltrasonicSensor extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	//setDefaultCommand(new GetDistance());
+    	setDefaultCommand(new DetectDistance());
     }
 }
 

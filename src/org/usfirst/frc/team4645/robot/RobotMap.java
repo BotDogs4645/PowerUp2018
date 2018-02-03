@@ -35,8 +35,8 @@ public class RobotMap
 	
 
 //climb motors
-	public static int climb1 = 10;	
-	public static int climb2 = 11;	
+	public static int climb1 = 21;	
+	public static int climb2 = 22;	
 
 //Analog Ports
 	

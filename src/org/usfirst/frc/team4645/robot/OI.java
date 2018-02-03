@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandDown;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandUp;
 import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
+import org.usfirst.frc.team4645.robot.commands.MoveWithColorSensor;
 import org.usfirst.frc.team4645.robot.commands.MoveWithUltrasonic;
 import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
 import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
@@ -24,6 +25,7 @@ import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
  */
 public class OI
 {
+	
 //creates joytick object
 	public static Joystick joystick1 = new Joystick(1);
 //pneumatics button
@@ -39,16 +41,16 @@ public class OI
 	
 	public OI()
 	{
-		button.whileHeld(new PneumaticsCommandIn());
+		//button.whileHeld(new PneumaticsCommandIn());
 		
 		
-		buttonIntake.whileHeld(new IntakeCommand());
-		buttonOuttake.whileHeld(new OuttakeCommand());
+	//	buttonIntake.whileHeld(new IntakeCommand());
+	//	buttonOuttake.whileHeld(new OuttakeCommand());
 		
-		buttonClimbUp.whileHeld(new ClimbCommandUp());
-		buttonClimbDown.whileHeld(new ClimbCommandDown());
+	//	buttonClimbUp.whileHeld(new ClimbCommandUp());
+	//	buttonClimbDown.whileHeld(new ClimbCommandDown());
 		
-		button.whenPressed(new MoveWithUltrasonic());
+		button.whenPressed(new MoveWithColorSensor());
 		
 	}
 
