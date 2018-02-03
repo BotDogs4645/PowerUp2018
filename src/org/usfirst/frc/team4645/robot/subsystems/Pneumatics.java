@@ -12,7 +12,7 @@ public class Pneumatics extends Subsystem {
     // here. Call these from Commands.
 	//Creates solenoid object
 	
-		DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.leftPistonIn,RobotMap.leftPistonOut);
+	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.leftPistonIn,RobotMap.leftPistonOut);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

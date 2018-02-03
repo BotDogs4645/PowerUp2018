@@ -36,7 +36,11 @@ public class RobotMap
 
 //climb motors
 	public static int climb1 = 10;	
-	public static int climb2 = 11;	
+	public static int climb2 = 14;	
+	
+	
+//encoder motors
+	public static int encoderMotor1=11;
 
 
 
