@@ -22,17 +22,17 @@ public class MoveWithUltrasonic extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.tankDriveSubsystem.move(0.3);
+    	Robot.tankDriveSubsystem.move(0.3); //Move tank drive at 0.3
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (31 >= Robot.kUltrasonic.getDistance());
+        return (31 >= Robot.kUltrasonic.getDistance()); //Finish when distance is less than 31 (30 is the ultrasonic minimum)
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.tankDriveSubsystem.stop();
+    	Robot.tankDriveSubsystem.stop(); //stop tank drive
     }
 
     // Called when another command which requires one or more of the same
