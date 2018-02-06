@@ -10,11 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class MoveWithColorSensor extends Command {
 
-    public MoveWithColorSensor() {
+	DriverStation.Alliance color;
+	
+    public MoveWithColorSensor(DriverStation.Alliance pColor) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.tankDriveSubsystem);
     	requires(Robot.kColorSensor);
+    	color = pColor;
     }
 
     // Called just before this Command runs the first time
@@ -29,10 +32,9 @@ public class MoveWithColorSensor extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	int[] colors = Robot.kColorSensor.getColor();
-    	DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
-    	if (alliance == DriverStation.Alliance.Invalid) {
-    		return (colors[3] == 3);
-    	} else if (alliance == DriverStation.Alliance.Blue) {
+    	if (color == DriverStation.Alliance.Invalid) {
+    		return (colors[3] == 0);
+    	} else if (color == DriverStation.Alliance.Blue) {
     		return (colors[3] == 3);
     	} else {
     		return (colors[3] == 10);

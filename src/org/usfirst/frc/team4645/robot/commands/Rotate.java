@@ -1,22 +1,15 @@
 package org.usfirst.frc.team4645.robot.commands;
 
-import org.usfirst.frc.team4645.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class MoveWithUltrasonic extends Command {
+public class Rotate extends Command {
 
-	boolean moveUntil;
-	
-    public MoveWithUltrasonic(boolean pMoveUntil) {
+    public Rotate(int degrees) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.tankDriveSubsystem);
-    	requires(Robot.kUltrasonic);
-    	moveUntil = pMoveUntil; 
     }
 
     // Called just before this Command runs the first time
@@ -25,23 +18,15 @@ public class MoveWithUltrasonic extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.tankDriveSubsystem.move(0.3); //Move tank drive at 0.3
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (moveUntil) {
-    		return (31 >= Robot.kUltrasonic.getDistance()); //Finish when distance is less than 31 cm
-    
-    	} else {
-    		return (32 <= Robot.kUltrasonic.getDistance()); //Finish when distance is greater than 32 cm
-    	}
-    	//30 cm is the minimum value the ultrasonic sensor can return
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.tankDriveSubsystem.stop(); //stop tank drive
     }
 
     // Called when another command which requires one or more of the same
