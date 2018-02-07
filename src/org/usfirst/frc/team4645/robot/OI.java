@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team4645.robot.commands.Autonomous;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandDown;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandUp;
 import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
@@ -50,7 +51,7 @@ public class OI
 	//	buttonClimbUp.whileHeld(new ClimbCommandUp());
 	//	buttonClimbDown.whileHeld(new ClimbCommandDown());
 		
-		button.whenPressed(new MoveWithColorSensor());
+		//button.whenPressed(new Autonomous());
 		
 	}
 

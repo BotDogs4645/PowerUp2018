@@ -9,11 +9,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous extends CommandGroup {
 
 	DriverStation dStation;
-	int location;
+	int startLocation;
 	String info;
 	String switchPos;
 	String scalePos;
 	DriverStation.Alliance alliance;
+	boolean scoredSwitch;
+	boolean scoredScale;
+	int robotLocation;
+	int turnAngle;
 	
 	public Autonomous() {
 		// Add Commands here:
@@ -34,88 +38,127 @@ public class Autonomous extends CommandGroup {
 		// arm.
 		
 		dStation = DriverStation.getInstance();
-		location = dStation.getLocation();
+		startLocation = dStation.getLocation();
 		info = dStation.getGameSpecificMessage();
 		switchPos = info.substring(0,1);
 		scalePos = info.substring(1,2);
 		alliance = dStation.getAlliance();
+		scoredSwitch = false;
+		scoredScale = false;
+		robotLocation = startLocation;
 		
-		if (location == 0) 
-		{
-			
-			addSequential(new MoveWithUltrasonic(true));
-			addSequential(new MoveWithUltrasonic(false));
-			addSequential(new Rotate(90));
-			
-			if (switchPos.equalsIgnoreCase("L")) {
-				
-				atLeftSwitch();
-				
-			} 
-			else {
-				
-				if (scalePos.equalsIgnoreCase("L")) {
-					
-					addSequential(new MoveWithColorSensor(alliance));
-					addSequential(new Rotate(-90));
-					addSequential(new OuttakeCommand());
-					addSequential(new Rotate(90));
-					moveRightOuttake();
-					
-					
-					
-				} else {
-					moveRightOuttake();
-					outtakeRotate();
-				}
-			}
-			
-		}
 		
-		else if (location == 1) {
-			
+		
+		
+		if (startLocation == 2) {
 			addSequential(new MoveWithEncoders(122));
-			if (switchPos.equalsIgnoreCase("L")) {
-				addSequential(new Rotate(-90));
-				addSequential(new MoveWithEncoders(335));
-				addSequential(new Rotate(90));
-				atLeftSwitch();
+			if (switchPos.equals("L")) {
+				startLocation = 1;
 			} else {
-				addSequential(new Rotate(90));
-				addSequential(new MoveWithEncoders(335));
-				addSequential(new Rotate(-90));
-				atRightSwitch();
-				
+				startLocation = 3;
 			}
-			
+			turnAngle = 90*(startLocation-2)*(-1);
+			addSequential(new Rotate(-turnAngle));
+			addSequential(new MoveWithEncoders(335));
+			addSequential(new Rotate(turnAngle));
+			leftAndRightAuto();
 		} else {
 			
-			addSequential(new MoveWithUltrasonic(true));
-			addSequential(new MoveWithUltrasonic(false));
-			addSequential(new Rotate(-90));
-			if (switchPos.equalsIgnoreCase("L")) {
-				if (scalePos.equalsIgnoreCase("L")) {
-					moveLeftOuttake();
-					outtakeRotate();
-					
-				} else {
-					addSequential(new MoveWithColorSensor(alliance));
-					addSequential(new Rotate(90));
-					addSequential(new OuttakeCommand());
-					addSequential(new Rotate(-90));
-					moveLeftOuttake();
-				}
-			} else {
-				atRightSwitch();
-				
-			}
+			leftAndRightAuto();
 			
 		}
 		
-		
-		
+		/*else {
+			
+			int turnAngle = 90*(location-2)*(-1); //90 if at location 1, -90 if at location 3
+			
+			addSequential(new MoveWithUltrasonic(true)); //Move up to switch
+			addSequential(new MoveWithUltrasonic(false)); //Move past switch
+			addSequential(new Rotate(turnAngle));
+			addSequential(new MoveWithColorSensor(alliance));
+			if ((switchPos.equals("L") && location == 0) || (switchPos.equals("R") && location == 3)) {
+				addSequential(new Rotate(turnAngle));
+				addSequential(new OuttakeCommand());
+				addSequential(new IntakeCommand());
+				if ((scalePos.equals("L") && location == 0) || (scalePos.equals("R") && location == 3)) {				
+					addSequential(new Rotate(180));
+					//add lift command
+					addSequential(new OuttakeCommand());
+				} else {
+					addSequential(new Rotate(-turnAngle));
+					addSequential(new MoveWithColorSensor(alliance));
+					addSequential(new Rotate(-turnAngle));
+					//Add lift command
+					addSequential(new OuttakeCommand());
+					
+				}
+			} else {
+				
+				
+				
+				if ((scalePos.equals("L") && location == 0) || (scalePos.equals("R") && location == 3)) {				
+					addSequential(new Rotate(-turnAngle));
+					//add lift command
+					addSequential(new OuttakeCommand());
+					addSequential(new Rotate(turnAngle));
+					
+				}
+				addSequential(new MoveWithColorSensor(alliance));
+				addSequential(new Rotate(turnAngle));
+				addSequential(new OuttakeCommand());
+				addSequential(new IntakeCommand());
+				if (!((scalePos.equals("L") && location == 0) || (scalePos.equals("R") && location == 3))) {				
+					addSequential(new Rotate(180));
+					//add lift command
+					addSequential(new OuttakeCommand());					
+				}
+			}
+		}
+		*/
 	}
 	
+	private void scoreSwitch() {
+		addSequential(new Rotate(turnAngle));
+		addSequential(new OuttakeCommand());
+		scoredSwitch = true;
+		addSequential(new IntakeCommand());
+		addSequential(new Rotate(-turnAngle));
+	}
+	
+	private void scoreScale() {
+		addSequential(new Rotate(-turnAngle));
+		//add lift command
+		addSequential(new OuttakeCommand());
+		scoredScale = true;
+		addSequential(new Rotate(90));
+	}
+	
+	private void checkSwitchAndScale() {
+		if ((switchPos.equals("L") && robotLocation == 0) || (switchPos.equals("R") && robotLocation == 3)) {
+			scoreSwitch();
+		}
+		if ((scalePos.equals("L") && robotLocation == 0) || (scalePos.equals("R") && robotLocation == 3)) {				
+			scoreScale();
+		}
+	}
+	
+	private void leftAndRightAuto() {
+		turnAngle = 90*(startLocation-2)*(-1); //90 if at location 1, -90 if at location 3
+		
+		addSequential(new MoveWithUltrasonic(true)); //Move up to switch
+		addSequential(new MoveWithUltrasonic(false)); //Move past switch
+		addSequential(new Rotate(turnAngle));
+		addSequential(new MoveWithColorSensor(alliance));
+		
+		checkSwitchAndScale();
+		
+		if (!scoredSwitch || !scoredScale) {
+			addSequential(new MoveWithColorSensor(alliance));
+			robotLocation = -(startLocation-2) + 2;
+			checkSwitchAndScale();
+		}
+	}
+	/*
 	private void atLeftSwitch() {
 		addSequential(new MoveWithColorSensor(alliance));
 		addSequential(new Rotate(90));
@@ -169,6 +212,8 @@ public class Autonomous extends CommandGroup {
 	private void outtakeRotate() {
 		addSequential(new IntakeCommand());
 		addSequential(new Rotate(180));
+		//Add lift command
 		addSequential(new OuttakeCommand());
 	}
+	*/
 }
