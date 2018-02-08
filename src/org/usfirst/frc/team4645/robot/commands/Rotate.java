@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4645.robot.commands;
 
+import org.usfirst.frc.team4645.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -10,6 +12,7 @@ public class Rotate extends Command {
     public Rotate(int degrees) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.tankDriveSubsystem);
     }
 
     // Called just before this Command runs the first time
