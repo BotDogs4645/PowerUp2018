@@ -8,10 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class EncoderCommand extends Command {
-
-    public EncoderCommand() {
+	private double distance;
+    public EncoderCommand(double pDistance) {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.encoderSubsystem);
+        distance=pDistance;
     }
 
     // Called just before this Command runs the first time
@@ -23,22 +24,24 @@ public class EncoderCommand extends Command {
     protected void execute() {
     	//Runs motor while getting velocity and position
     Robot.encoderSubsystem.runEncoderMotor();
-    Robot.encoderSubsystem.getEncoderVelocity();
+    //Robot.encoderSubsystem.getEncoderVelocity();
     Robot.encoderSubsystem.getEncoderPosition();
 
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return(Robot.encoderSubsystem.getEncoderPosition()>=distance);
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.encoderSubsystem.restEncoderMotor();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	
     }
 }

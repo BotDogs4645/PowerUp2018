@@ -35,20 +35,26 @@ public class OI
 	Button buttonClimbUp = new JoystickButton(joystick1,7);
 	Button buttonClimbDown = new JoystickButton(joystick1,8);
 	
+	Button buttonEncoder = new JoystickButton(joystick1,9);
 
 
 	
 	
 	public OI()
 	{
-		/*button.whileHeld(new PneumaticsCommandIn());
+		button.whileHeld(new PneumaticsCommandIn());
 		
 		
 		buttonIntake.whileHeld(new IntakeCommand());
 		buttonOuttake.whileHeld(new OuttakeCommand());
 		
 		buttonClimbUp.whileHeld(new ClimbCommandUp());
-		buttonClimbDown.whileHeld(new ClimbCommandDown());*/
+		buttonClimbDown.whileHeld(new ClimbCommandDown());
+		
+		buttonEncoder.whenPressed(new EncoderCommand(4096));
+
+		
+		
 		
 		
 	}
