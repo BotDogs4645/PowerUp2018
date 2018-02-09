@@ -52,7 +52,7 @@ public class Autonomous extends CommandGroup {
 		//Robot begins facing forward
 		
 		if (startLocation == 2) { //if starting at the center
-			addSequential(new MoveWithEncoders(122)); //Move 122 cm forward
+			addSequential(new MoveWithEncoders(131)); //Move 131 inches forward, possibly change this value
 			if (switchPos.equals("L")) { //Check switch position
 				startLocation = 1; 
 			} else {
@@ -61,7 +61,7 @@ public class Autonomous extends CommandGroup {
 			//When starting at center, the robot will move to the location where the scale is and run the code for that side
 			turnAngle = 90*(startLocation-2)*(-1); //90 if at location 1, -90 if at location 3
 			addSequential(new Rotate(-turnAngle)); //turn right or left, whichever side alliance switch is on
-			addSequential(new MoveWithEncoders(335)); //Move 335 cm to that side
+			addSequential(new MoveWithEncoders(335)); //Move 335 inches to that side, possibly change this value
 			addSequential(new Rotate(turnAngle)); //turn to face center of field
 			leftAndRightAuto(); //Run code for left and right starting positions
 		} else {

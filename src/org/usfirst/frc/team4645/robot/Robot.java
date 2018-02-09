@@ -3,6 +3,7 @@ import org.usfirst.frc.team4645.robot.subsystems.ClimbingSubsystem;
 import org.usfirst.frc.team4645.robot.subsystems.ColorSensor;
 import org.usfirst.frc.team4645.robot.subsystems.IntakeSystem;
 import org.usfirst.frc.team4645.robot.subsystems.Pneumatics;
+import org.usfirst.frc.team4645.robot.subsystems.PowerManagement;
 import org.usfirst.frc.team4645.robot.subsystems.TankDrive;
 import org.usfirst.frc.team4645.robot.subsystems.UltrasonicSensor;
 
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot
 	public static final ClimbingSubsystem climbingSystem= new ClimbingSubsystem();
 	public static final ColorSensor kColorSensor = new ColorSensor();
 	public static final UltrasonicSensor kUltrasonic = new UltrasonicSensor();
+	public static final PowerManagement kPowerManagement = new PowerManagement();
 	
 	
 	public static OI oi;
