@@ -37,10 +37,16 @@ public class TankDrive extends Subsystem
 		motorL2.setInverted(true);
 		motorL3.setInverted(true);
 			
-		motorR2.follow(motorR1);
+		/*motorR2.follow(motorR1);
 		motorR3.follow(motorR1);
 		motorR2.setInverted(true);
-		motorR3.setInverted(true);
+		motorR3.setInverted(true);*/
+		
+		motorR1.setInverted(true);
+		motorR2.follow(motorR1);
+		motorR3.follow(motorR1);
+		motorR2.setInverted(false);
+		motorR3.setInverted(false);		
     }
     
     public void driveWithJoystick()
