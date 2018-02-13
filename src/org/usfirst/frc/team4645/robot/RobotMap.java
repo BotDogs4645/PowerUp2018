@@ -17,12 +17,12 @@ public class RobotMap
 {
 
 //pneumatics
-	public static int leftPistonIn = 1;
-	public static int leftPistonOut =2;
+	public static int leftPistonIn = 2;
+	public static int leftPistonOut =3;
 
 //tank drive motors
-	public static int left1 = 1;
-	public static int left2 = 2;
+	public static int left1 = 20;  //was 1
+	public static int left2 = 21;  //was 2
 	public static int left3 = 3;
 	public static int right1 = 4;
 	public static int right2 = 5;

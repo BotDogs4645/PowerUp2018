@@ -5,6 +5,7 @@ import org.usfirst.frc.team4645.robot.commands.EncoderCommand;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -16,10 +17,16 @@ import com.ctre.phoenix.motorcontrol.can.*;
 /**
  *
  */
-public class MagEncoderSub extends Subsystem 
+public class MagEncoderSub extends PIDSubsystem 
 {
+	public MagEncoderSub(double p, double i, double d) {
+		super(p, i, d);
+		
+		// TODO Auto-generated constructor stub
+	}
 	//Creating motor
 	public WPI_TalonSRX motorForEncoder1 = new WPI_TalonSRX(RobotMap.encoderMotor1);
+ 
 	// Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -71,6 +78,17 @@ public class MagEncoderSub extends Subsystem
     public void goToEncoderCount()
     {
     }
+	@Override
+	protected double returnPIDInput() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	protected void usePIDOutput(double output) {
+		// TODO Auto-generated method stub
+		motorForEncoder1.pidWrite(output);
+		
+	}
     }
 
     

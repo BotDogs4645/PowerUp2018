@@ -18,6 +18,8 @@ public class EncoderCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.encoderSubsystem.initEncoder();
+    	Robot.encoderSubsystem.getPIDController().setSetpoint(distance);
+    	Robot.encoderSubsystem.getPIDController().enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,7 +29,7 @@ public class EncoderCommand extends Command {
     //Robot.encoderSubsystem.getEncoderVelocity();
     Robot.encoderSubsystem.getEncoderPosition();
 
-    }
+    }//karen sucks
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

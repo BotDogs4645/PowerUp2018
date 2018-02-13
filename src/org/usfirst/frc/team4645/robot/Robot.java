@@ -25,7 +25,7 @@ public class Robot extends IterativeRobot
 	public static final TankDrive tankDriveSubsystem = new TankDrive();
 	public static final IntakeSystem kIntakeSystem= new IntakeSystem();
 	public static final ClimbingSubsystem climbingSystem= new ClimbingSubsystem();
-	public static final MagEncoderSub encoderSubsystem= new MagEncoderSub();
+	public static final MagEncoderSub encoderSubsystem= new MagEncoderSub(1,2,3);
 
 
 
