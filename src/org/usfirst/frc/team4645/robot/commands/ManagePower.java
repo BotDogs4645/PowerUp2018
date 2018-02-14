@@ -2,22 +2,17 @@ package org.usfirst.frc.team4645.robot.commands;
 
 import org.usfirst.frc.team4645.robot.Robot;
 
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class GetBatteryVoltage extends Command {
+public class ManagePower extends Command {
 
-	
-	
-    public GetBatteryVoltage() {
+    public ManagePower() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.kPowerManagement);
-    	
     }
 
     // Called just before this Command runs the first time
@@ -25,9 +20,13 @@ public class GetBatteryVoltage extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-   /* protected void execute() {
-    	SmartDashboard.putNumber("Voltage", pdp.getVoltage()); //Get voltage in volts
-    }*/
+    protected void execute() {
+    	double battery = Robot.kPowerManagement.getBatteryVoltage();
+    	if (battery <= 10) { //Change 10 to something else
+    		//Robot.kPowerManagement.maxCurrent();
+    		
+    	}
+    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

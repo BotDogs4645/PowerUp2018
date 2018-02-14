@@ -15,6 +15,7 @@ import org.usfirst.frc.team4645.robot.commands.Autonomous;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandDown;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandUp;
 import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
+import org.usfirst.frc.team4645.robot.commands.MoveMotor;
 import org.usfirst.frc.team4645.robot.commands.MoveWithColorSensor;
 import org.usfirst.frc.team4645.robot.commands.MoveWithUltrasonic;
 import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
@@ -38,7 +39,10 @@ public class OI
 	Button buttonClimbUp = new JoystickButton(joystick1,7);
 	Button buttonClimbDown = new JoystickButton(joystick1,8);
 
-	
+	Button buttonMotor1 = new JoystickButton(joystick1, 9);
+	Button buttonMotor2 = new JoystickButton(joystick1, 10);
+	Button buttonMotor3 = new JoystickButton(joystick1, 11);
+
 	
 	public OI()
 	{
@@ -52,6 +56,12 @@ public class OI
 	//	buttonClimbDown.whileHeld(new ClimbCommandDown());
 		
 		//button.whenPressed(new Autonomous());
+		
+		buttonMotor1.whenPressed(new MoveMotor(0.2));
+		buttonMotor2.whenPressed(new MoveMotor(0.5));
+		buttonMotor3.whenPressed(new MoveMotor(1));
+
+		
 		
 	}
 

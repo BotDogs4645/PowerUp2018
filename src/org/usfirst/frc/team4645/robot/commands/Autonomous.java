@@ -103,15 +103,20 @@ public class Autonomous extends CommandGroup {
 		addSequential(new Rotate(turnAngle)); //Turn towards switch
 		//lift
 		//Move forward
+		addSequential(new MoveWithEncoders(1)); //PLACEHOLDER NUMBER CHANGE THIS
+
 		addSequential(new OuttakeCommand()); //Outtake into switch
 		scoredSwitch = true;
 		//Move back
+		addSequential(new MoveWithEncoders(-1)); //PLACEHOLDER NUMBER CHANGE THIS
+
 		addSequential(new IntakeCommand()); //Intake cube in front of the switch
 		addSequential(new Rotate(-turnAngle)); //Rotate towards center of field
 	}
 	
 	private void scoreScale() {
 		addSequential(new Rotate(-turnAngle)); //Turn towards scale
+		addSequential(new MoveWithEncoders(1)); //PLACEHOLDER NUMBER CHANGE THIS
 		//move forward
 		//add lift command
 		addSequential(new OuttakeCommand()); //Outtake into scale
