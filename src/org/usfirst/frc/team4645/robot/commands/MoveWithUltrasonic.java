@@ -3,6 +3,7 @@ package org.usfirst.frc.team4645.robot.commands;
 import org.usfirst.frc.team4645.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -26,15 +27,16 @@ public class MoveWithUltrasonic extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.tankDriveSubsystem.move(0.3); //Move tank drive at 0.3
+    	SmartDashboard.putNumber("Distance", Robot.kUltrasonic.getDistance());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if (moveUntil) {
-    		return (31 >= Robot.kUltrasonic.getDistance()); //Finish when distance is less than 31 cm
+    		return (34 >= Robot.kUltrasonic.getDistance()); //Finish when distance is less than 31 cm
     
     	} else {
-    		return (32 <= Robot.kUltrasonic.getDistance()); //Finish when distance is greater than 32 cm
+    		return (34 < Robot.kUltrasonic.getDistance()); //Finish when distance is greater than 32 cm
     	}
     	//30 cm is the minimum value the ultrasonic sensor can return
     }

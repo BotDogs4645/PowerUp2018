@@ -4,6 +4,7 @@ import org.usfirst.frc.team4645.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -20,13 +21,15 @@ public class MoveWithColorSensor extends Command {
     	color = pColor;
     }
 
+
     // Called just before this Command runs the first time
     protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.tankDriveSubsystem.move(0.3);
+    	Robot.tankDriveSubsystem.move(-0.3);
+    	SmartDashboard.putNumber("speed", Robot.tankDriveSubsystem.motorL1.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()

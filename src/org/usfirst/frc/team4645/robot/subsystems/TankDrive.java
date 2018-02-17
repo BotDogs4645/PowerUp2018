@@ -37,16 +37,16 @@ public class TankDrive extends Subsystem
 		motorL2.setInverted(true);
 		motorL3.setInverted(true);
 			
-		/*motorR2.follow(motorR1);
+		motorR2.follow(motorR1);
 		motorR3.follow(motorR1);
 		motorR2.setInverted(true);
-		motorR3.setInverted(true);*/
+		motorR3.setInverted(true);
 		
-		motorR1.setInverted(true);
+		/*motorR1.setInverted(true);
 		motorR2.follow(motorR1);
 		motorR3.follow(motorR1);
 		motorR2.setInverted(false);
-		motorR3.setInverted(false);		
+		motorR3.setInverted(false);*/		
     }
     
     public void driveWithJoystick()
@@ -73,6 +73,10 @@ public class TankDrive extends Subsystem
 		robotDrive.arcadeDrive(forward, turn);		
 	}
   
+    public void move(double speed) {
+    	motorL1.set(speed);
+    	motorR1.set(speed);
+    }
     	
     public void stop()
     {
@@ -80,5 +84,7 @@ public class TankDrive extends Subsystem
 		motorR1.set(0);
 
 	}
+    
+    
     
 }

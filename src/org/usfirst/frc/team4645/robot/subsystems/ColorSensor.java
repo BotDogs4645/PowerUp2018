@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4645.robot.subsystems;
 
-import org.usfirst.frc.team4645.robot.commands.DetectColor;
+//import org.usfirst.frc.team4645.robot.commands.DetectColor;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -56,6 +56,6 @@ public class ColorSensor extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(new DetectColor());
+		//setDefaultCommand(new DetectColor());
 	}
 }

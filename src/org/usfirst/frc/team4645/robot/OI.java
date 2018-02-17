@@ -8,12 +8,15 @@
 package org.usfirst.frc.team4645.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandDown;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandUp;
 import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
+import org.usfirst.frc.team4645.robot.commands.MoveWithColorSensor;
+import org.usfirst.frc.team4645.robot.commands.MoveWithUltrasonic;
 import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
 import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
 
@@ -34,7 +37,7 @@ public class OI
 	Button buttonClimbUp = new JoystickButton(joystick1,7);
 	Button buttonClimbDown = new JoystickButton(joystick1,8);
 
-	
+	Button testButton = new JoystickButton(joystick1, 11);
 	
 	public OI()
 	{
@@ -46,6 +49,8 @@ public class OI
 		
 		buttonClimbUp.whileHeld(new ClimbCommandUp());
 		buttonClimbDown.whileHeld(new ClimbCommandDown());
+		
+		testButton.whenPressed(new MoveWithUltrasonic(false));
 		
 	}
 
