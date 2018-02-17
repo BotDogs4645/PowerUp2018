@@ -26,6 +26,8 @@ public class ManagePower extends Command {
     		//Robot.kPowerManagement.maxCurrent();
     		
     	}
+    	Robot.kPowerManagement.updateCurrentOrder();
+    	Robot.kPowerManagement.displayCurrents();
     }
 
     // Make this return true when this Command no longer needs to run execute()

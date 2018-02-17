@@ -25,9 +25,10 @@ public class GetBatteryVoltage extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-   /* protected void execute() {
-    	SmartDashboard.putNumber("Voltage", pdp.getVoltage()); //Get voltage in volts
-    }*/
+    protected void execute() {
+    	SmartDashboard.putNumber("Voltage", Robot.kPowerManagement.pdp.getVoltage()); //Get voltage in volts
+    	Robot.kPowerManagement.displayCurrents();
+    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

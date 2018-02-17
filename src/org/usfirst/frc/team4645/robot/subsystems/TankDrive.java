@@ -64,9 +64,12 @@ public class TankDrive extends Subsystem
 			turn = 0;
 		}
 		
+		
+		
 		SmartDashboard.putNumber("JoyY:",  forward);
 		SmartDashboard.putNumber("Turn", turn);		
 	
+		
 		robotDrive.arcadeDrive(forward, turn);
 		
 		
