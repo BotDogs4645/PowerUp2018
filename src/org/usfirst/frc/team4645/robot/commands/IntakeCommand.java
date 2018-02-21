@@ -23,8 +23,8 @@ public class IntakeCommand extends Command
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	//calls method to intake
-    	Robot.kIntakeSystem.intakeIn();
+    		//calls method to intake
+    		Robot.kIntakeSystem.intakeIn();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -42,7 +42,7 @@ public class IntakeCommand extends Command
     // subsystems is scheduled to run
     protected void interrupted()
     {
-    	Robot.kIntakeSystem.intakeRest();
+    		Robot.kIntakeSystem.intakeRest();
 
     }
 }

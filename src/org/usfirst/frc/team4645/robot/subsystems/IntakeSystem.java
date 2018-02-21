@@ -6,8 +6,6 @@ import org.usfirst.frc.team4645.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-
-import edu.wpi.first.wpilibj.Talon;
 /**
  *
  */
@@ -27,15 +25,15 @@ public class IntakeSystem extends Subsystem {
     //intakes cube in
     public void intakeIn()
     {
-    	motorIntake1.set(1);
-    	motorIntake2.set(-1);
+    	motorIntake1.set(0.5);
+    	motorIntake2.set(-0.5);
     	
     }
   //intakes cube out
     public void intakeOut()
     {
-    	motorIntake1.set(-1);
-    	motorIntake2.set(1);
+    	motorIntake1.set(-0.5);
+    	motorIntake2.set(0.5);
     	
     }
     

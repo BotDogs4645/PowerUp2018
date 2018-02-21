@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ClimbingSubsystem extends Subsystem {
 	private  WPI_TalonSRX motorClimb1 = new WPI_TalonSRX(RobotMap.climb1);
-	private WPI_TalonSRX motorClimb2 = new WPI_TalonSRX(RobotMap.climb2);
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -22,20 +21,17 @@ public class ClimbingSubsystem extends Subsystem {
     }
     	public void climbUp()
         {
-        	motorClimb1.set(-.5);
-        	motorClimb2.set(.5);
+        	motorClimb1.set(-.3);
         	
         }
     	public void climbDown()
         {
-        	motorClimb1.set(.5);
-        	motorClimb2.set(-.5);
+        	motorClimb1.set(.3);
         	
         }
     	public void climbRest()
         {
         	motorClimb1.set(0);
-        	motorClimb2.set(0);
         	
         }
     }
