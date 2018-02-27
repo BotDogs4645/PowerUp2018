@@ -3,6 +3,7 @@ import org.usfirst.frc.team4645.robot.OI;
 import org.usfirst.frc.team4645.robot.RobotMap;
 import org.usfirst.frc.team4645.robot.commands.DriveCommand;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -46,9 +47,7 @@ public class TankDrive extends Subsystem
 		motorR2.follow(motorR1);
 		motorR3.follow(motorR1);
 		motorR2.setInverted(false);
-		motorR3.setInverted(false);	*/	
-
-
+		motorR3.setInverted(false);*/		
     }
     
     public void driveWithJoystick()

@@ -38,8 +38,8 @@ public class RobotMap
 	public static int climb1 = 3; //was 3
 
 //Analog input
-	public static int ultrasonicChannel1 = 0;
-	public static int ultrasonicChannel2 = 1;
+	public static int ultrasonicChannel1 = 1;
+	public static int ultrasonicChannel2 = 2;
 
 	
 	
