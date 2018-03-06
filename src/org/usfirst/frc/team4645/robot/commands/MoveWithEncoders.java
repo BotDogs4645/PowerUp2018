@@ -50,10 +50,10 @@ public class MoveWithEncoders extends Command
     {
    
 	    	SmartDashboard.putString("MoveWithEncoder", "executing");
-	    	SmartDashboard.putNumber("Left PID Input", Robot.tankDriveSubsystem.getLeftPosition());
-	    	SmartDashboard.putNumber("Right PID Input", Robot.tankDriveSubsystem.getRightPosition());
-	    	SmartDashboard.putNumber("Left PID Output", Robot.tankDriveSubsystem.motorL1.get());
-	    	SmartDashboard.putNumber("Right PID Output", Robot.tankDriveSubsystem.motorR1.get());	    	
+	    	SmartDashboard.putNumber("Left PID Input(encoder val)", Robot.tankDriveSubsystem.getLeftPosition());
+	    	SmartDashboard.putNumber("Right PID Input(encoder val)", Robot.tankDriveSubsystem.getRightPosition());
+	    	SmartDashboard.putNumber("Left PID Output(motor power)", Robot.tankDriveSubsystem.motorL1.get());
+	    	SmartDashboard.putNumber("Right PID Output(motor power)", Robot.tankDriveSubsystem.motorR1.get());	    	
 	    	
 	    	
 	    //	SmartDashboard.putNumber("Velocity", Robot.tankDriveSubsystem.getLeftVelocity());

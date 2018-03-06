@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class ClimbingSubsystem extends Subsystem {
+public class ClimbSubsystem extends Subsystem {
 	private  WPI_TalonSRX motorClimb1 = new WPI_TalonSRX(RobotMap.climb1);
 
     // Put methods for controlling this subsystem
@@ -29,11 +29,10 @@ public class ClimbingSubsystem extends Subsystem {
         	motorClimb1.set(.3);
         	
         }
-    	public void climbRest()
+    	public void climbStop()
         {
         	motorClimb1.set(0);
         	
         }
     }
-
 

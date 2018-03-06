@@ -18,6 +18,7 @@ import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
 import org.usfirst.frc.team4645.robot.commands.MoveWithColorSensor;
 import org.usfirst.frc.team4645.robot.commands.MoveWithUltrasonic;
 import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
+import org.usfirst.frc.team4645.robot.commands.PIDLiftCommand;
 import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
 
 /**
@@ -26,9 +27,11 @@ import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
  */
 public class OI
 {
-//creates joytick object
-	public static Joystick joystick1 = new Joystick(1);
-//pneumatics button
+
+	public static Joystick joystick1 = new Joystick(0);
+	
+	public static Joystick joystick2 = new Joystick(1);
+
 	Button button = new JoystickButton(joystick1,3);
 	
 	Button buttonIntake = new JoystickButton(joystick1,5);
@@ -38,6 +41,12 @@ public class OI
 	Button buttonClimbDown = new JoystickButton(joystick1,8);
 
 	Button testButton = new JoystickButton(joystick1, 11);
+	
+	Button liftGround = new JoystickButton(joystick2, 3);
+	Button liftSwitch = new JoystickButton(joystick2, 4);
+	Button liftScale = new JoystickButton(joystick2, 5);
+	Button liftHook = new JoystickButton(joystick2,6);
+	
 	
 	public OI()
 	{
@@ -51,6 +60,11 @@ public class OI
 		buttonClimbDown.whileHeld(new ClimbCommandDown());
 		
 		testButton.whenPressed(new MoveWithUltrasonic(false));
+		
+		//liftGround.whenPressed(new PIDLiftCommand(10));
+		//liftSwitch.whenPressed(new PIDLiftCommand(10));
+		//liftScale.whenPressed(new PIDLiftCommand(10));
+		//liftHook.whenPressed(new PIDLiftCommand(10));
 		
 	}
 

@@ -64,8 +64,6 @@ public class TankDrive extends Subsystem
 		motorR3.follow(motorR1);
 		motorR2.setInverted(true);
 		motorR3.setInverted(true);	
-			 	
-	
     }
     
     public void configureEncoders()//apply to where init() is used
@@ -77,12 +75,21 @@ public class TankDrive extends Subsystem
 		//selects the optical encoder, sets it as a closed loop, and sets timeout to 10ms
 		motorR1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);	
 		motorL1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);  
+		
+		motorL1.setSensorPhase(true);
+		motorR1.setSensorPhase(true);
+		
+		leftEncoderPID.setContinuous(false);
+		rightEncoderPID.setContinuous(false);
+		
+		leftEncoderPID.setAbsoluteTolerance(100);
+		rightEncoderPID.setAbsoluteTolerance(100);
     }    
     
     public void driveWithJoystick()
     {
 		double forward = (OI.joystick1.getY());
-		double turn = (OI.joystick1.getZ());
+		double turn = (OI.joystick1.getZ()); //make negative?
 
 		/* deadband */
 		

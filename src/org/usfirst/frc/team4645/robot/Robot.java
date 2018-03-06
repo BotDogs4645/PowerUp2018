@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4645.robot;
-import org.usfirst.frc.team4645.robot.subsystems.ClimbingSubsystem;
+import org.usfirst.frc.team4645.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team4645.robot.subsystems.ClimbSubsystem;
 import org.usfirst.frc.team4645.robot.subsystems.ColorSensor;
 import org.usfirst.frc.team4645.robot.subsystems.IntakeSystem;
 import org.usfirst.frc.team4645.robot.subsystems.Pneumatics;
@@ -25,9 +26,10 @@ public class Robot extends IterativeRobot
 	public static final Pneumatics pneumaticsSubsystem= new Pneumatics();
 	public static final TankDrive tankDriveSubsystem = new TankDrive();
 	public static final IntakeSystem kIntakeSystem= new IntakeSystem();
-	public static final ClimbingSubsystem climbingSystem= new ClimbingSubsystem();
+	public static final LiftSubsystem liftSubsystem= new LiftSubsystem();
 	public static final UltrasonicSensor kUltrasonic = new UltrasonicSensor();
 	public static final ColorSensor kColorSensor = new ColorSensor();
+	public static final ClimbSubsystem climbingSystem= new ClimbSubsystem();
 	
 	public static OI oi;
 
