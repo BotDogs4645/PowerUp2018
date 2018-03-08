@@ -31,27 +31,41 @@ public class OI
 	public static Joystick joystick1 = new Joystick(0);
 	
 	public static Joystick joystick2 = new Joystick(1);
+	
+	//JOYSTICK1
+	Button driveTrainPneumatics = new JoystickButton(joystick1,3);
+	Button winchPneumatics = new JoystickButton(joystick1,4);
+	
+	Button buttonIntake = new JoystickButton(joystick1,7);
+	Button buttonOuttake = new JoystickButton(joystick1,8);
+	
+	//temporary buttons for testing purposes
+	Button liftUp = new JoystickButton(joystick1, 5);
+	Button liftDown = new JoystickButton(joystick1,6);	
+	
 
-	Button button = new JoystickButton(joystick1,3);
+	//Button testButton = new JoystickButton(joystick1, 11);
 	
-	Button buttonIntake = new JoystickButton(joystick1,5);
-	Button buttonOuttake = new JoystickButton(joystick1,6);
 	
-	Button buttonClimbUp = new JoystickButton(joystick1,7);
-	Button buttonClimbDown = new JoystickButton(joystick1,8);
-
-	Button testButton = new JoystickButton(joystick1, 11);
-	
+	//JOYSTICK2
 	Button liftGround = new JoystickButton(joystick2, 3);
 	Button liftSwitch = new JoystickButton(joystick2, 4);
 	Button liftScale = new JoystickButton(joystick2, 5);
 	Button liftHook = new JoystickButton(joystick2,6);
 	
+	Button buttonClimbUp = new JoystickButton(joystick2,7);
+	Button buttonClimbDown = new JoystickButton(joystick2,8);	
+	
+	
+	
+
+	
 	
 	public OI()
 	{
-		button.whileHeld(new PneumaticsCommandIn());
+		driveTrainPneumatics.whileHeld(new PneumaticsCommandIn());
 		
+		winchPneumatics.whileHeld(new PneumaticsCommandIn());
 		
 		buttonIntake.whileHeld(new IntakeCommand());
 		buttonOuttake.whileHeld(new OuttakeCommand());
@@ -59,10 +73,10 @@ public class OI
 		buttonClimbUp.whileHeld(new ClimbCommandUp());
 		buttonClimbDown.whileHeld(new ClimbCommandDown());
 		
-		testButton.whenPressed(new MoveWithUltrasonic(false));
+		//testButton.whenPressed(new MoveWithUltrasonic(false));
 		
-		//liftGround.whenPressed(new PIDLiftCommand(10));
-		//liftSwitch.whenPressed(new PIDLiftCommand(10));
+		liftGround.whenPressed(new PIDLiftCommand(20000));
+		liftSwitch.whenPressed(new PIDLiftCommand(10));
 		//liftScale.whenPressed(new PIDLiftCommand(10));
 		//liftHook.whenPressed(new PIDLiftCommand(10));
 		

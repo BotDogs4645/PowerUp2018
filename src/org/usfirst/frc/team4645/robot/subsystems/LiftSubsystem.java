@@ -14,16 +14,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class LiftSubsystem extends PIDSubsystem {
-	private  WPI_TalonSRX liftMotor = new WPI_TalonSRX(RobotMap.climb1);
+	private  WPI_TalonSRX liftMotor = new WPI_TalonSRX(RobotMap.lift);
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
 	public LiftSubsystem()
 	{
-		super("climbing", 0, 0, 0);
+		super("lifting", 0.04, 0.001, 0);
 		getPIDController().setContinuous(false);
-		liftMotor.setSensorPhase(true);
+		setAbsoluteTolerance(100);
 	}
 
     public void initDefaultCommand() {
@@ -33,21 +33,26 @@ public class LiftSubsystem extends PIDSubsystem {
     
     public void init()
     {
+    		setOutputRange(-0.7, 0.7);
 		liftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 		liftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		liftMotor.setSensorPhase(true);
+		liftMotor.setInverted(true); //should go counter clockwise
     }
-    	public void climbUp()
+    
+    	public void liftUp()
     {
     		liftMotor.set(-.3);
     	
     }
-    	public void climbDown()
+    	
+    	public void liftDown()
     {
     		liftMotor.set(.3);
     	
     }
     	
-    	public void climbStop()
+    	public void liftStop()
     {
     		liftMotor.set(0);
     	

@@ -7,6 +7,9 @@ import org.usfirst.frc.team4645.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team4645.robot.subsystems.TankDrive;
 import org.usfirst.frc.team4645.robot.subsystems.UltrasonicSensor;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -35,6 +38,9 @@ public class Robot extends IterativeRobot
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	
+	NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -111,6 +117,28 @@ public class Robot extends IterativeRobot
 	public void teleopPeriodic() 
 	{
 		Scheduler.getInstance().run();
+		NetworkTableEntry tx = table.getEntry("tx");
+		NetworkTableEntry ty = table.getEntry("ty");
+		NetworkTableEntry ta = table.getEntry("ta");
+		NetworkTableEntry tv = table.getEntry("tv");
+		NetworkTableEntry ts = table.getEntry("ts");
+		NetworkTableEntry tl = table.getEntry("tl");
+		
+		double x = tx.getDouble(0);
+		double y = ty.getDouble(0);
+		double area = ta.getDouble(0);
+		double v = tv.getDouble(0);
+		double s = ts.getDouble(0);
+		double l = tl.getDouble(0);
+		
+		SmartDashboard.putNumber("Whether the limelight has any valid targets (0 or 1)",v);
+		SmartDashboard.putNumber("Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)",x);
+		SmartDashboard.putNumber("Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)",y);
+		SmartDashboard.putNumber("Target Area (0% of image to 100% of image)",area);
+		SmartDashboard.putNumber("Skew or rotation (-90 degrees to 0 degrees)",s);
+		SmartDashboard.putNumber("The pipelines latency contribution (ms) Add at least 11ms for image capture latency.",l);
+		
+		//NetworkTableInstance.getDefault().getTable(“limelight”).getEntry("led Mode").setNumber(1);
 	}
 
 	/**

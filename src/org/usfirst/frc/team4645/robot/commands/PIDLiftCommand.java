@@ -27,16 +27,16 @@ public class PIDLiftCommand extends Command {
     {
 		Robot.liftSubsystem.init();
 		Robot.liftSubsystem.setEncoderPosition(0);
-		SmartDashboard.putString("Climbing", "initializing");
+		SmartDashboard.putString("lift", "initializing");
 		liftPID.setSetpoint(height);
-		SmartDashboard.putNumber("target distance", height);
+		SmartDashboard.putNumber("lift target distance", height);
 		liftPID.enable();    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    		SmartDashboard.putString("Climbing", "execute");
+    		SmartDashboard.putString("lift", "execute");
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -49,8 +49,8 @@ public class PIDLiftCommand extends Command {
     protected void end() 
     {
 		liftPID.disable();
-		Robot.liftSubsystem.climbStop();
-		SmartDashboard.putString("climbing", "end");    	
+		Robot.liftSubsystem.liftStop();
+		SmartDashboard.putString("lift", "end");    	
     }
 
     // Called when another command which requires one or more of the same
