@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4645.robot.subsystems;
 
 import org.usfirst.frc.team4645.robot.RobotMap;
+import org.usfirst.frc.team4645.robot.commands.PIDLiftCommand;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
@@ -14,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class LiftSubsystem extends PIDSubsystem {
-	private  WPI_TalonSRX liftMotor = new WPI_TalonSRX(RobotMap.lift);
+	public  WPI_TalonSRX liftMotor = new WPI_TalonSRX(RobotMap.lift);
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -29,6 +30,7 @@ public class LiftSubsystem extends PIDSubsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    		//setDefaultCommand(new PIDLiftCommand());
     }
     
     public void init()
@@ -61,7 +63,11 @@ public class LiftSubsystem extends PIDSubsystem {
     public void setEncoderPosition(int pos) 
     {
     		liftMotor.setSelectedSensorPosition(pos, 0, 0);
-    }    	
+    }
+    
+    public void setTargetPosition(double pos) {
+    		getPIDController().setSetpoint(pos);
+    }
 
 	@Override
 	protected double returnPIDInput() {

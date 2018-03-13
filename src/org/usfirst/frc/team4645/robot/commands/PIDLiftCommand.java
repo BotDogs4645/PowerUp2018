@@ -27,21 +27,30 @@ public class PIDLiftCommand extends Command {
     {
 		Robot.liftSubsystem.init();
 		Robot.liftSubsystem.setEncoderPosition(0);
-		SmartDashboard.putString("lift", "initializing");
+		SmartDashboard.putString("PID lift", "initializing");
 		liftPID.setSetpoint(height);
-		SmartDashboard.putNumber("lift target distance", height);
+		//SmartDashboard.putNumber("lift target distance", height);
 		liftPID.enable();    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    		SmartDashboard.putString("lift", "execute");
+    		
+    		SmartDashboard.putString("PID lift", "execute");
+    		SmartDashboard.putNumber("PID lift encoder", Robot.liftSubsystem.liftMotor.get());
+    		/*if (liftPID.onTarget() && liftPID.isEnabled()) {
+    			liftPID.disable();
+    		} else if (!liftPID.onTarget() && !liftPID.isEnabled()) {
+    			liftPID.enable();
+    		}*/
+    		
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
+    		//SmartDashboard.putString("PID lift", "end");
     		return liftPID.onTarget();
     }
 
@@ -50,12 +59,14 @@ public class PIDLiftCommand extends Command {
     {
 		liftPID.disable();
 		Robot.liftSubsystem.liftStop();
-		SmartDashboard.putString("lift", "end");    	
+		SmartDashboard.putString("PID lift", "end");    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() 
     {
+    		
+    	
     }
 }

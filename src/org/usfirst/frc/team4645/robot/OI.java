@@ -15,7 +15,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandDown;
 import org.usfirst.frc.team4645.robot.commands.ClimbCommandUp;
 import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
+import org.usfirst.frc.team4645.robot.commands.LiftCommandDown;
+import org.usfirst.frc.team4645.robot.commands.LiftCommandUp;
+import org.usfirst.frc.team4645.robot.commands.LiftSetTarget;
 import org.usfirst.frc.team4645.robot.commands.MoveWithColorSensor;
+import org.usfirst.frc.team4645.robot.commands.MoveWithEncoders;
 import org.usfirst.frc.team4645.robot.commands.MoveWithUltrasonic;
 import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
 import org.usfirst.frc.team4645.robot.commands.PIDLiftCommand;
@@ -41,7 +45,12 @@ public class OI
 	
 	//temporary buttons for testing purposes
 	Button liftUp = new JoystickButton(joystick1, 5);
-	Button liftDown = new JoystickButton(joystick1,6);	
+	Button liftDown = new JoystickButton(joystick1,6);
+	
+	Button moveWithEncoders = new JoystickButton(joystick1,1);
+	
+	//moving with encoders
+	Button driveTrain = new JoystickButton(joystick1, 2);
 	
 
 	//Button testButton = new JoystickButton(joystick1, 11);
@@ -73,12 +82,17 @@ public class OI
 		buttonClimbUp.whileHeld(new ClimbCommandUp());
 		buttonClimbDown.whileHeld(new ClimbCommandDown());
 		
+		liftUp.whileHeld(new LiftCommandUp());
+		liftDown.whileHeld(new LiftCommandDown());
+		
 		//testButton.whenPressed(new MoveWithUltrasonic(false));
 		
-		liftGround.whenPressed(new PIDLiftCommand(20000));
-		liftSwitch.whenPressed(new PIDLiftCommand(10));
+		liftGround.whenPressed(new PIDLiftCommand(0));
+		liftSwitch.whenPressed(new PIDLiftCommand(7500));
 		//liftScale.whenPressed(new PIDLiftCommand(10));
 		//liftHook.whenPressed(new PIDLiftCommand(10));
+		
+		driveTrain.whenPressed(new MoveWithEncoders(10, 10, 0.5));
 		
 	}
 

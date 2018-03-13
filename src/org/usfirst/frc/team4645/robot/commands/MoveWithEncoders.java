@@ -18,7 +18,7 @@ public class MoveWithEncoders extends Command
 	double speed;
 
 	//takes the distance the user wants to move as a parameter
-    public MoveWithEncoders(double prightDistance, double pleftDistance, double pspeed) 
+    public MoveWithEncoders(double pleftDistance, double prightDistance, double pspeed) 
     {
     	
     	    requires(Robot.tankDriveSubsystem);
@@ -26,6 +26,9 @@ public class MoveWithEncoders extends Command
     	    rightDistance = prightDistance * 72; //there are 72 counts per inch
     	    leftDistance = pleftDistance * 72; //there are 72 counts per inch 
     	    speed=pspeed;
+    	    
+    	    leftPID = Robot.tankDriveSubsystem.leftEncoderPID;
+    	    rightPID = Robot.tankDriveSubsystem.rightEncoderPID;
     }
 
     //slaves and inverts motors; configures optical encoders; 
@@ -39,8 +42,8 @@ public class MoveWithEncoders extends Command
     		Robot.tankDriveSubsystem.setRightEncoderSetpoint(rightDistance);
     		Robot.tankDriveSubsystem.setLeftEncoderSetpoint(leftDistance);
     		
-    		SmartDashboard.putNumber("target rightDistance(inches)", rightDistance/72);
-    		SmartDashboard.putNumber("target leftDistance(inches)", leftDistance/72);
+    		SmartDashboard.putNumber("target rightDistance(encoder val)", rightDistance);
+    		SmartDashboard.putNumber("target leftDistance(encoder val)", leftDistance);
     		
     		Robot.tankDriveSubsystem.setOutputRange(speed);
     		Robot.tankDriveSubsystem.enablePIDS();

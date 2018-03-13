@@ -30,8 +30,8 @@ public class RobotMap
 	
 	
 //intake motors
-	public static int intake1 = 1;	
-	public static int intake2 = 2;	
+	public static int intake1 = 3;//1	
+	public static int intake2 = 4;//	
 	
 
 //lift motor

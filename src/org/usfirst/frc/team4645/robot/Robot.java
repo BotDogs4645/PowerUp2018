@@ -117,7 +117,14 @@ public class Robot extends IterativeRobot
 	public void teleopPeriodic() 
 	{
 		Scheduler.getInstance().run();
-		NetworkTableEntry tx = table.getEntry("tx");
+		
+		NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+		
+		NetworkTableEntry led = table.getEntry("led Mode");
+		double ledNum = led.getDouble(0);
+		
+		
+		/*NetworkTableEntry tx = table.getEntry("tx");
 		NetworkTableEntry ty = table.getEntry("ty");
 		NetworkTableEntry ta = table.getEntry("ta");
 		NetworkTableEntry tv = table.getEntry("tv");
@@ -136,9 +143,16 @@ public class Robot extends IterativeRobot
 		SmartDashboard.putNumber("Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)",y);
 		SmartDashboard.putNumber("Target Area (0% of image to 100% of image)",area);
 		SmartDashboard.putNumber("Skew or rotation (-90 degrees to 0 degrees)",s);
-		SmartDashboard.putNumber("The pipelines latency contribution (ms) Add at least 11ms for image capture latency.",l);
+		SmartDashboard.putNumber("The pipelines latency contribution (ms) Add at least 11ms for image capture latency.",l);*/
 		
-		//NetworkTableInstance.getDefault().getTable(“limelight”).getEntry("led Mode").setNumber(1);
+		
+		
+		table.getEntry("led Mode").setNumber(1);
+		SmartDashboard.putNumber("led", ledNum);
+		
+		
+		
+		
 	}
 
 	/**

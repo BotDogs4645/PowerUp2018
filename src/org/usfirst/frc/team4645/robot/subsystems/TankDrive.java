@@ -89,11 +89,11 @@ public class TankDrive extends Subsystem
     public void driveWithJoystick()
     {
 		double forward = (OI.joystick1.getY());
-		double turn = (OI.joystick1.getZ()); //make negative?
+		double turn = -(OI.joystick1.getZ()); //make negative?
 
 		/* deadband */
 		
-		if ((Math.abs(forward) < 0.50) && (Math.abs(turn) < 0.70)) 
+		if ((Math.abs(forward) < 0.30) && (Math.abs(turn) < 0.30)) 
 		{
 			SmartDashboard.putNumber("Motor power w/ joystick", motorL1.get());
 			/* within 10% joystick, make it zero */
