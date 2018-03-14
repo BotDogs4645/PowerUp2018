@@ -13,6 +13,7 @@ public class RightPIDSource implements PIDSource
 	{
 		// TODO Auto-generated method stub
 		
+		
 	}
 
 	@Override

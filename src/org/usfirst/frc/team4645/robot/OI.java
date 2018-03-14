@@ -87,12 +87,12 @@ public class OI
 		
 		//testButton.whenPressed(new MoveWithUltrasonic(false));
 		
-		liftGround.whenPressed(new PIDLiftCommand(0));
-		liftSwitch.whenPressed(new PIDLiftCommand(7500));
+		liftGround.whenPressed(new LiftSetTarget(0));
+		liftSwitch.whenPressed(new LiftSetTarget(7500));
 		//liftScale.whenPressed(new PIDLiftCommand(10));
 		//liftHook.whenPressed(new PIDLiftCommand(10));
 		
-		driveTrain.whenPressed(new MoveWithEncoders(10, 10, 0.5));
+		driveTrain.whenPressed(new MoveWithEncoders(6,6, 0.5));
 		
 	}
 

@@ -22,7 +22,7 @@ public class LiftSubsystem extends PIDSubsystem {
 	
 	public LiftSubsystem()
 	{
-		super("lifting", 0.04, 0.001, 0);
+		super("lifting", 0.04, 0.0001, 0);
 		getPIDController().setContinuous(false);
 		setAbsoluteTolerance(100);
 	}
@@ -30,12 +30,12 @@ public class LiftSubsystem extends PIDSubsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    		//setDefaultCommand(new PIDLiftCommand());
+    	setDefaultCommand(new PIDLiftCommand());
     }
     
     public void init()
     {
-    		setOutputRange(-0.7, 0.7);
+    	setOutputRange(-0.7, 0.7);
 		liftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 		liftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
 		liftMotor.setSensorPhase(true);

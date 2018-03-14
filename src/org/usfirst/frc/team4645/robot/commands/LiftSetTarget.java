@@ -20,12 +20,17 @@ public class LiftSetTarget extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    		//Robot.liftSubsystem.init();
     		Robot.liftSubsystem.setTargetPosition(height);
+    		SmartDashboard.putString("LiftSetTarget ", "initializing");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		SmartDashboard.putNumber("Target position", height);
+    		SmartDashboard.putString("LiftSetTarget ", "executing");
+    		SmartDashboard.putNumber("LiftSetTarget position", height);
+    		//SmartDashboard.putNumber("LiftSetTarget position", height);
+    		
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,6 +40,8 @@ public class LiftSetTarget extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	SmartDashboard.putString("LiftSetTarget ", "end");
+    	
     }
 
     // Called when another command which requires one or more of the same
