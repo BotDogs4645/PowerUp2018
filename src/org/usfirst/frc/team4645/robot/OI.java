@@ -87,8 +87,8 @@ public class OI
 		
 		//testButton.whenPressed(new MoveWithUltrasonic(false));
 		
-		liftGround.whenPressed(new LiftSetTarget(0));
-		liftSwitch.whenPressed(new LiftSetTarget(7500));
+		liftGround.whenPressed(new LiftSetTarget(50));
+		liftSwitch.whenPressed(new LiftSetTarget(-7500));
 		//liftScale.whenPressed(new PIDLiftCommand(10));
 		//liftHook.whenPressed(new PIDLiftCommand(10));
 		

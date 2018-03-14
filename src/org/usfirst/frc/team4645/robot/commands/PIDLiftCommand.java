@@ -9,16 +9,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PIDLiftCommand extends Command {
 	
-	//private double height;
+	private double height;
 	private PIDController liftPID;
 
-    public PIDLiftCommand() 
+    public PIDLiftCommand(double pheight) 
     {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	    requires(Robot.liftSubsystem);
 	    liftPID = Robot.liftSubsystem.getPIDController();    	
-    	//height = pheight; //change to inches
+    	height = pheight; //change to inches
 
     }
 
@@ -29,7 +29,7 @@ public class PIDLiftCommand extends Command {
 		Robot.liftSubsystem.setEncoderPosition(0);
 		SmartDashboard.putString("PID lift", "initializing");
 		
-		liftPID.setSetpoint(0);
+		liftPID.setSetpoint(height);
 		//SmartDashboard.putNumber("lift target distance", height);
 		liftPID.enable();    	
     }
@@ -41,7 +41,7 @@ public class PIDLiftCommand extends Command {
     		SmartDashboard.putString("PID lift", "execute");
     		SmartDashboard.putNumber("PID lift encoder", Robot.liftSubsystem.liftMotor.get());
     	
-    		//SmartDashboard.putNumber("PID lift target", height);
+    		SmartDashboard.putNumber("PID lift target", height);
     		/*if (liftPID.onTarget() && liftPID.isEnabled()) {
     			liftPID.disable();
     		} else if (!liftPID.onTarget() && !liftPID.isEnabled()) {
@@ -54,7 +54,7 @@ public class PIDLiftCommand extends Command {
     protected boolean isFinished() 
     {
     		//SmartDashboard.putString("PID lift", "end");
-    		return false;//liftPID.onTarget();
+    		return liftPID.onTarget();//false;//liftPID.onTarget();
     }
 
     // Called once after isFinished returns true

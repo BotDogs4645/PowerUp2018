@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4645.robot.subsystems;
 
+import org.usfirst.frc.team4645.robot.Robot;
 import org.usfirst.frc.team4645.robot.RobotMap;
 import org.usfirst.frc.team4645.robot.commands.PIDLiftCommand;
 
@@ -22,24 +23,32 @@ public class LiftSubsystem extends PIDSubsystem {
 	
 	public LiftSubsystem()
 	{
-		super("lifting", 0.04, 0.0001, 0);
+		super("lifting", 0.05, 0.1, 0);
 		getPIDController().setContinuous(false);
-		setAbsoluteTolerance(100);
+		setPercentTolerance(5);
+		
+		//Was in init
+		setOutputRange(-0.4, 0.4);
+		liftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
+		liftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		liftMotor.setSensorPhase(true);
+		liftMotor.setInverted(true); //should go counter clockwise
+		
+		//In pidliftcommand init
+		setEncoderPosition(0);
+		getPIDController().enable();
+		
 	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new PIDLiftCommand());
+    	//setDefaultCommand(new PIDLiftCommand());
     }
     
     public void init()
     {
-    	setOutputRange(-0.7, 0.7);
-		liftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
-		liftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-		liftMotor.setSensorPhase(true);
-		liftMotor.setInverted(true); //should go counter clockwise
+    	
     }
     
     	public void liftUp()
