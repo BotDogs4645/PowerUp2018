@@ -22,7 +22,6 @@ import org.usfirst.frc.team4645.robot.commands.MoveWithColorSensor;
 import org.usfirst.frc.team4645.robot.commands.MoveWithEncoders;
 import org.usfirst.frc.team4645.robot.commands.MoveWithUltrasonic;
 import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
-import org.usfirst.frc.team4645.robot.commands.PIDLiftCommand;
 import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
 
 /**
@@ -43,9 +42,7 @@ public class OI
 	Button buttonIntake = new JoystickButton(joystick1,7);
 	Button buttonOuttake = new JoystickButton(joystick1,8);
 	
-	//temporary buttons for testing purposes
-	Button liftUp = new JoystickButton(joystick1, 5);
-	Button liftDown = new JoystickButton(joystick1,6);
+
 	
 	Button moveWithEncoders = new JoystickButton(joystick1,1);
 	
@@ -65,6 +62,10 @@ public class OI
 	Button buttonClimbUp = new JoystickButton(joystick2,7);
 	Button buttonClimbDown = new JoystickButton(joystick2,8);	
 	
+	//temporary buttons for testing purposes
+	Button liftUp = new JoystickButton(joystick2, 10);
+	Button liftDown = new JoystickButton(joystick2,9);
+	
 	
 	
 
@@ -79,20 +80,20 @@ public class OI
 		buttonIntake.whileHeld(new IntakeCommand());
 		buttonOuttake.whileHeld(new OuttakeCommand());
 		
-		buttonClimbUp.whileHeld(new ClimbCommandUp());
-		buttonClimbDown.whileHeld(new ClimbCommandDown());
+		//buttonClimbUp.whileHeld(new ClimbCommandUp());
+		//buttonClimbDown.whileHeld(new ClimbCommandDown());
 		
-		liftUp.whileHeld(new LiftCommandUp());
-		liftDown.whileHeld(new LiftCommandDown());
+		//liftUp.whileHeld(new LiftCommandUp());
+		//liftDown.whileHeld(new LiftCommandDown());
 		
 		//testButton.whenPressed(new MoveWithUltrasonic(false));
 		
-		liftGround.whenPressed(new LiftSetTarget(50));
-		liftSwitch.whenPressed(new LiftSetTarget(-7500));
+		//liftGround.whenPressed(new LiftSetTarget(1000));
+		liftSwitch.whenPressed(new LiftSetTarget(1200));
 		//liftScale.whenPressed(new PIDLiftCommand(10));
 		//liftHook.whenPressed(new PIDLiftCommand(10));
 		
-		driveTrain.whenPressed(new MoveWithEncoders(6,6, 0.5));
+		//driveTrain.whenPressed(new MoveWithEncoders(6,6, 0.5));
 		
 	}
 

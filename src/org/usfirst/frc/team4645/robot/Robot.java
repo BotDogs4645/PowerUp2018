@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4645.robot;
 import org.usfirst.frc.team4645.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team4645.robot.commands.Autonomous;
 import org.usfirst.frc.team4645.robot.subsystems.ClimbSubsystem;
 import org.usfirst.frc.team4645.robot.subsystems.ColorSensor;
 import org.usfirst.frc.team4645.robot.subsystems.IntakeSystem;
@@ -34,9 +35,11 @@ public class Robot extends IterativeRobot
 	public static final ColorSensor kColorSensor = new ColorSensor();
 	public static final ClimbSubsystem climbingSystem= new ClimbSubsystem();
 	
+	
+	
 	public static OI oi;
 
-	Command autonomousCommand;
+	Command autonomousCommand = new Autonomous();
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
 	NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -50,7 +53,7 @@ public class Robot extends IterativeRobot
 	public void robotInit() 
 	{
 		oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser.addObject("My Auto", new Autonomous());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 
@@ -85,7 +88,8 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit() 
 	{
-		autonomousCommand = chooser.getSelected();
+		//autonomousCommand = new Autonomous();
+		//autonomousCommand = chooser.getSelected();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
 	}

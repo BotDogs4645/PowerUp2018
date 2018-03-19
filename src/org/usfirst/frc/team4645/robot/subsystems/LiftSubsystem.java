@@ -2,12 +2,12 @@ package org.usfirst.frc.team4645.robot.subsystems;
 
 import org.usfirst.frc.team4645.robot.Robot;
 import org.usfirst.frc.team4645.robot.RobotMap;
-import org.usfirst.frc.team4645.robot.commands.PIDLiftCommand;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 //import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -16,27 +16,28 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class LiftSubsystem extends PIDSubsystem {
-	public  WPI_TalonSRX liftMotor = new WPI_TalonSRX(RobotMap.lift);
+	public WPI_TalonSRX liftMotor = new WPI_TalonSRX(RobotMap.lift);
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+
 	
 	public LiftSubsystem()
 	{
-		super("lifting", 0.05, 0.1, 0);
-		getPIDController().setContinuous(false);
-		setPercentTolerance(5);
+		super("lifting", 0.0005 , 0.0004, 00);//0.005,
+		//setContinuous(false);
+		setAbsoluteTolerance(100);
 		
-		//Was in init
-		setOutputRange(-0.4, 0.4);
-		liftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
-		liftMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		getPIDController().setContinuous(false);
 		liftMotor.setSensorPhase(true);
-		liftMotor.setInverted(true); //should go counter clockwise
+		
+
+		 
+		 
 		
 		//In pidliftcommand init
-		setEncoderPosition(0);
-		getPIDController().enable();
+		/*setEncoderPosition(0);
+		getPIDController().setSetpoint(0);
+		getPIDController().enable();*/
+		
 		
 	}
 
@@ -48,30 +49,37 @@ public class LiftSubsystem extends PIDSubsystem {
     
     public void init()
     {
+		//Was in init
+		setOutputRange(-0.8, 0.8);
+		liftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
+		liftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 10);
+		liftMotor.setInverted(true); //should go counter clockwise
     	
     }
     
-    	public void liftUp()
+
+    
+    public void liftUp()
     {
-    		liftMotor.set(-.3);
+    	liftMotor.set(-.3);
     	
     }
     	
-    	public void liftDown()
+    public void liftDown()
     {
-    		liftMotor.set(.3);
+    	liftMotor.set(.3);
     	
     }
     	
-    	public void liftStop()
+    public void liftStop()
     {
-    		liftMotor.set(0);
+    	liftMotor.stopMotor();
     	
     }
 
     public void setEncoderPosition(int pos) 
-    {
-    		liftMotor.setSelectedSensorPosition(pos, 0, 0);
+    { 
+    	liftMotor.setSelectedSensorPosition(pos, 0, 0);
     }
     
     public void setTargetPosition(double pos) {
@@ -83,6 +91,7 @@ public class LiftSubsystem extends PIDSubsystem {
 		// TODO Auto-generated method stub
 		SmartDashboard.putNumber("PID input(lift encoder)", liftMotor.getSelectedSensorPosition(0));
 		return liftMotor.getSelectedSensorPosition(0);
+
 	}
 
 	@Override

@@ -13,10 +13,11 @@ public class UltrasonicSensor extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private AnalogInput dSensor = new AnalogInput(RobotMap.ultrasonicChannel1); //Create analog input object
-	
-	public double getDistance() {
-		double voltage = dSensor.getVoltage(); //Analog voltage from distance sensor
+	private AnalogInput dSensor1 = new AnalogInput(RobotMap.ultrasonicChannel1); //Create analog input object
+	private AnalogInput dSensor2 = new AnalogInput(RobotMap.ultrasonicChannel2);
+	AnalogInput[] dSensors = {dSensor1, dSensor2};
+	public double getDistance(int port) {
+		double voltage = dSensors[port].getVoltage(); //Analog voltage from distance sensor
 		
 		double rangemm = ((voltage*1000)/4.88)*5; //Voltage scaling from sensor documentation
 		double rangecm = (rangemm/10); //Convert mm to cm

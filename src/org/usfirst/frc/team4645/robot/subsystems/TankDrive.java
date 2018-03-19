@@ -31,8 +31,8 @@ public class TankDrive extends Subsystem
 	private RightPIDSource rightPIDSource = new RightPIDSource();
 
 	//Sets PID values (kp, ki, kd, PIDSource, PIDOutput)
-	public PIDController leftEncoderPID = new PIDController(0,0,0, leftPIDSource ,motorL1);
-	public PIDController rightEncoderPID = new PIDController(0,0,0, rightPIDSource ,motorR1);
+	public PIDController leftEncoderPID = new PIDController(0.004,0,0, leftPIDSource ,motorL1);
+	public PIDController rightEncoderPID = new PIDController(0.004,0,0, rightPIDSource ,motorR1);
 
     public void initDefaultCommand() 
     {
@@ -152,7 +152,7 @@ public class TankDrive extends Subsystem
 	
     public void move(double speed) 
     {
-    		motorL1.set(speed);
+    		motorL1.set(-speed);
     		motorR1.set(speed);
     }
 	
