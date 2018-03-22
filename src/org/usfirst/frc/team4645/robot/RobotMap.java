@@ -21,12 +21,12 @@ public class RobotMap
 	public static int leftPistonOut = 2;
 
 //tank drive motors
-	public static int left1 = 14; //14
-	public static int left2 = 15; //15
-	public static int left3 = 16; //16
-	public static int right1 = 11;
-	public static int right2 = 12;
-	public static int right3 = 13;
+	public static int left1 = 6; //14
+	public static int left2 = 4; //15
+	public static int left3 = 5; //16
+	public static int right1 = 1;//11
+	public static int right2 = 2;//12
+	public static int right3 = 3;//13
 	
 	
 //intake motors

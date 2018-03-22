@@ -88,7 +88,7 @@ public class TankDrive extends Subsystem
     
     public void driveWithJoystick()
     {
-		double forward = (OI.joystick1.getY());
+		double forward = (OI.joystick1.getY()) * OI.joystick1.getThrottle(); //always make sure its at 1 or -1 
 		double turn = -(OI.joystick1.getZ()); //make negative?
 
 		/* deadband */
@@ -178,24 +178,6 @@ public class TankDrive extends Subsystem
 		leftEncoderPID.setSetpoint(setpoint);
     }		    
     
-	/*
 
-	@Override
-	protected void usePIDOutput(double output) 
-	{
-		//if (getPIDController().isEnable())
-		// TODO Auto-generated method stub
-			
-			motorL1.pidWrite(output);
-			motorR1.pidWrite(output);
-			SmartDashboard.putNumber("PID output", output);
-			
-			SmartDashboard.putNumber("Motor output", motorL1.get());
-			
-			
-		
-	}  
-	
-	 */
 
 }

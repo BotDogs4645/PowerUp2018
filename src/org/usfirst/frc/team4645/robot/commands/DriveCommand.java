@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4645.robot.commands;
+import org.usfirst.frc.team4645.robot.OI;
 import org.usfirst.frc.team4645.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class DriveCommand extends Command
@@ -19,6 +21,7 @@ public class DriveCommand extends Command
     protected void execute() 
     {	
     		Robot.tankDriveSubsystem.driveWithJoystick();
+    		SmartDashboard.putNumber("joystick1 throttle", OI.joystick1.getThrottle());
     }
 
     protected boolean isFinished() 

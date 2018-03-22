@@ -124,7 +124,7 @@ public class Robot extends IterativeRobot
 		
 		NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
 		
-		NetworkTableEntry led = table.getEntry("led Mode");
+		NetworkTableEntry led = table.getEntry("ledMode");
 		double ledNum = led.getDouble(0);
 		
 		
@@ -151,7 +151,7 @@ public class Robot extends IterativeRobot
 		
 		
 		
-		table.getEntry("led Mode").setNumber(1);
+		table.getEntry("ledMode").setNumber(1);
 		SmartDashboard.putNumber("led", ledNum);
 		
 		

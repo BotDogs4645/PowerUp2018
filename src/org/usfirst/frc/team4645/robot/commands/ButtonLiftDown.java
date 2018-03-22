@@ -5,10 +5,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LiftDown extends Command {
+public class ButtonLiftDown extends Command {
 
 	public static boolean pressed = true;
-    public LiftDown() {
+    public ButtonLiftDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -16,7 +16,7 @@ public class LiftDown extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     }
-
+    		//alex su
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
