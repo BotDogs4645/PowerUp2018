@@ -8,19 +8,12 @@
 package org.usfirst.frc.team4645.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team4645.robot.commands.ClimbCommandDown;
-import org.usfirst.frc.team4645.robot.commands.ClimbCommandUp;
+
 import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
-import org.usfirst.frc.team4645.robot.commands.LiftCommandDown;
-import org.usfirst.frc.team4645.robot.commands.LiftCommandUp;
 import org.usfirst.frc.team4645.robot.commands.LiftSetTarget;
-import org.usfirst.frc.team4645.robot.commands.MoveWithColorSensor;
-import org.usfirst.frc.team4645.robot.commands.MoveWithEncoders;
-import org.usfirst.frc.team4645.robot.commands.MoveWithUltrasonic;
 import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
 import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
 
