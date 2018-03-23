@@ -22,12 +22,12 @@ public class LiftSubsystem extends PIDSubsystem {
 	
 	public LiftSubsystem()
 	{
-		super("lifting", 0.0005 , 0.0004, 00);//0.005,
+		super("lifting", 0.0001 , 0.00000, 00);//0.005, started with 0.0001 //reached target at 0.0003 w/ oscillations //reached position at 0.00015
 		//setContinuous(false);
 		setAbsoluteTolerance(100);
 		
 		getPIDController().setContinuous(false);
-		liftMotor.setSensorPhase(true);
+		liftMotor.setSensorPhase(false); // set led green when going positive direction
 		
 
 		 
@@ -50,10 +50,10 @@ public class LiftSubsystem extends PIDSubsystem {
     public void init()
     {
 		//Was in init
-		setOutputRange(-0.8, 0.8);
+		setOutputRange(-0.1, 0.1);
 		liftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 		liftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 10);
-		liftMotor.setInverted(true); //should go counter clockwise
+		liftMotor.setInverted(false); //should go counter clockwise
     	
     }
     
