@@ -22,7 +22,7 @@ public class LiftSubsystem extends PIDSubsystem {
 	
 	public LiftSubsystem()
 	{
-		super("lifting", 0.0001 , 0.00000, 00);//0.005, started with 0.0001 //reached target at 0.0003 w/ oscillations //reached position at 0.00015
+		super("lifting", 0.0001 , 0.0000001, 00);//0.005, started with 0.0001 //reached target at 0.0003 w/ oscillations //reached position at 0.00015
 		//setContinuous(false);
 		setAbsoluteTolerance(100);
 		
