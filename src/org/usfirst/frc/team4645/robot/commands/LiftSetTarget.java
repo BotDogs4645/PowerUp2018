@@ -26,7 +26,7 @@ public class LiftSetTarget extends Command {
     protected void initialize() {
     		//Robot.liftSubsystem.init();
     		Robot.liftSubsystem.init();
-    		Robot.liftSubsystem.setEncoderPosition(0);
+    		//Robot.liftSubsystem.setEncoderPosition(0);
     		//Robot.liftSubsystem.setTargetPosition(height);
     		SmartDashboard.putString("LiftSetTarget ", "initializing");
     		

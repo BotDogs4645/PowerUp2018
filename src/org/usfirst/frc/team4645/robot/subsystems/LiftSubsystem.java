@@ -28,6 +28,7 @@ public class LiftSubsystem extends PIDSubsystem {
 		
 		getPIDController().setContinuous(false);
 		liftMotor.setSensorPhase(false); // set led green when going positive direction
+		setEncoderPosition(0);
 		
 
 		 
@@ -48,6 +49,7 @@ public class LiftSubsystem extends PIDSubsystem {
     }
     
     public void init()
+    
     {
 		//Was in init
 		setOutputRange(-0.1, 0.1);
