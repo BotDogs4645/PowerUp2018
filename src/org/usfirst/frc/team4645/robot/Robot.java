@@ -35,7 +35,7 @@ public class Robot extends IterativeRobot
 	public static final ColorSensor kColorSensor = new ColorSensor();
 	public static final ClimbSubsystem climbingSystem= new ClimbSubsystem();
 	
-	
+	public static SendableChooser<String> timeDelay = new SendableChooser<>();
 	
 	public static OI oi;
 

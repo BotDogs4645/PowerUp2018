@@ -52,7 +52,7 @@ public class LiftSubsystem extends PIDSubsystem {
     
     {
 		//Was in init
-		setOutputRange(-0.1, 0.1);
+		setOutputRange(-0.1, 0.3);
 		liftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 		liftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 10);
 		liftMotor.setInverted(false); //should go counter clockwise
