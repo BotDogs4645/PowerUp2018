@@ -8,9 +8,11 @@ import org.usfirst.frc.team4645.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team4645.robot.subsystems.TankDrive;
 import org.usfirst.frc.team4645.robot.subsystems.UltrasonicSensor;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -38,6 +40,8 @@ public class Robot extends IterativeRobot
 	public static SendableChooser<String> timeDelay = new SendableChooser<>();
 	
 	public static OI oi;
+	
+	UsbCamera powerUpCamera = CameraServer.getInstance().startAutomaticCapture(0);
 
 	Command autonomousCommand = new Autonomous();
 	SendableChooser<Command> chooser = new SendableChooser<>();
