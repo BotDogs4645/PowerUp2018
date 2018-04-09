@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4645.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 //import org.usfirst.frc.team4645.robot.*;
 
@@ -7,27 +8,54 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class Autonomous extends CommandGroup {
-
+	
+	//Declare Variables
+	
+	/*
+	DriverStation dStation;
+	int startLocation;
+	String info;
+	String switchPos;
+	String scalePos;
+	DriverStation.Alliance alliance;
+	*/
+	
     public Autonomous() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
-
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
-
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
-    	//addSequential(new MoveWithEncoders(12, 12, 0.4));
     	
-    	//addSequential(new MoveWithUltrasonic(true, 1));
-    	addSequential(new DriveForwardTime());
+    	//Initialize Variables
+    	/*
+    	dStation = DriverStation.getInstance();
+    	startLocation = dStation.getLocation();
+    	info = dStation.getGameSpecificMessage();
+    	switchPos = info.substring(0,1);
+    	scalePos = info.substring(1,2);
+    	alliance = dStation.getAlliance();
+    	*/
+    	
+    	
+    	addSequential(new DriveForwardTime(1.25));//drive forward
+    	
+    	//addSequential(new TurnWithTime(0,0, 2));//wait
+    	
+    	
+    	
+    	
+    	//Code for turning, comment out if we dont need to turn
+    	/*
+    	if (startLocation == 1 && switchPos.equalsIgnoreCase("L")) {
+    		//Turn right
+    		addSequential(new TurnWithTime(-0.5,0.5, 1.0));
+    		
+    	} else if (startLocation == 3 && switchPos.equalsIgnoreCase("R")) {
+    		//Turn left
+    		addSequential(new TurnWithTime(0.5,-0.5, 1.0));
+    	}
+    	
+    	*/
+    	//addSequential(new LiftSetTarget(20000));//lift
+    	//addParallel(new WaitAndOuttake());//outtake
+    	
+    	
+    	
     }
 }

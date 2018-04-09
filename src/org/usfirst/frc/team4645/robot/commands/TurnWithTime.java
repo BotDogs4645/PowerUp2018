@@ -4,50 +4,34 @@ import org.usfirst.frc.team4645.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class DriveForwardTime extends Command {
-
+public class TurnWithTime extends Command {
 	Timer time = new Timer();
-	double delay;
-	
-    public DriveForwardTime(double time) {
+	private double lSpeed;
+	private double rSpeed;
+	private double delay;
+    public TurnWithTime(double leftSpeed, double rightSpeed, double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.tankDriveSubsystem);
+    	lSpeed = leftSpeed;
+    	rSpeed = rightSpeed;
     	delay = time;
+    	requires(Robot.tankDriveSubsystem);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	time.start();
-    	//timeDelay = Robot.autonomousDelay;
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() 
-    {  
-    	//SmartDashboard.putNumber("autonomous delay seconds", timeDelay);
-    	SmartDashboard.putNumber("current time", time.get());
-    	Robot.tankDriveSubsystem.moveRight(-0.5);
-    	Robot.tankDriveSubsystem.moveLeft(-0.55);
+    protected void execute() {
     	
-    	
-    	
-    	
-    	/*if (time.get() < timeDelay)
-    	{
-    		SmartDashboard.putString("autonomous status","not moving");
-    		Robot.tankDriveSubsystem.move(0);
-    	}
-    	else 
-    	{
-    		Robot.tankDriveSubsystem.move(-.2);
-    		SmartDashboard.putString("autonomous status","moving");
-    	}*/
+    	Robot.tankDriveSubsystem.moveRight(rSpeed);
+    	Robot.tankDriveSubsystem.moveLeft(lSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -60,8 +44,7 @@ public class DriveForwardTime extends Command {
     }
 
     // Called once after isFinished returns true
-    protected void end() 
-    {
+    protected void end() {
     	Robot.tankDriveSubsystem.move(0);
     }
 

@@ -22,7 +22,8 @@ public class LiftSubsystem extends PIDSubsystem {
 	
 	public LiftSubsystem()
 	{
-		super("lifting", 0.0001 , 0.0000001, 00);//0.005, started with 0.0001 //reached target at 0.0003 w/ oscillations //reached position at 0.00015
+		super("lifting", 0.0001 , 0.0000001, 00);
+		//0.0001 , 0.0000001, 00
 		//setContinuous(false);
 		setAbsoluteTolerance(100);
 		
@@ -52,7 +53,7 @@ public class LiftSubsystem extends PIDSubsystem {
     
     {
 		//Was in init
-		setOutputRange(-0.1, 0.3);
+		setOutputRange(-0.4, 0.7);
 		liftMotor.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
 		liftMotor.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Absolute, 0, 10);
 		liftMotor.setInverted(false); //should go counter clockwise

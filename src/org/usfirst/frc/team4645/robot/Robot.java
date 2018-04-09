@@ -29,7 +29,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot 
 {
 	
-	public static final Pneumatics pneumaticsSubsystem= new Pneumatics();
+	//public static final Pneumatics pneumaticsSubsystem= new Pneumatics();
 	public static final TankDrive tankDriveSubsystem = new TankDrive();
 	public static final IntakeSystem kIntakeSystem= new IntakeSystem();
 	public static final LiftSubsystem liftSubsystem= new LiftSubsystem();
@@ -37,14 +37,20 @@ public class Robot extends IterativeRobot
 	public static final ColorSensor kColorSensor = new ColorSensor();
 	public static final ClimbSubsystem climbingSystem= new ClimbSubsystem();
 	
-	public static SendableChooser<String> timeDelay = new SendableChooser<>();
+	
+	
+	
+	Command  autonomousCommand = new Autonomous();
+	SendableChooser<Command> chooser =new SendableChooser();
 	
 	public static OI oi;
 	
+	
 	UsbCamera powerUpCamera = CameraServer.getInstance().startAutomaticCapture(0);
-
-	Command autonomousCommand = new Autonomous();
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	//boolean resolutionSet = powerUpCamera.setResolution(5000, 300);
+	
+	//public static int autonomousDelay;
+	
 	
 	NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
 
@@ -57,8 +63,21 @@ public class Robot extends IterativeRobot
 	public void robotInit() 
 	{
 		oi = new OI();
+		
+		
+		
+		/*autoChooser.addDefault("5",5);
+		autoChooser.addObject("0",0);
+		autoChooser.addObject("10",10);
+		
+		
+		SmartDashboard.putData("How long would you like autonomous to delay?", autoChooser);*/
 		chooser.addObject("My Auto", new Autonomous());
 		SmartDashboard.putData("Auto mode", chooser);
+
+
+		
+
 	}
 
 	/**
@@ -76,6 +95,7 @@ public class Robot extends IterativeRobot
 	public void disabledPeriodic() 
 	{
 		Scheduler.getInstance().run();
+		//autonomousDelay=(int) autoChooser.getSelected();
 	}
 
 	/**
@@ -92,10 +112,13 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit() 
 	{
-		//autonomousCommand = new Autonomous();
-		//autonomousCommand = chooser.getSelected();
+		//autonomousDelay=(int) autoChooser.getSelected();
+		
+				//autonomousCommand = chooser.getSelected();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		
+		
 	}
 
 	/**
@@ -110,12 +133,13 @@ public class Robot extends IterativeRobot
 	@Override
 	public void teleopInit() 
 	{
+		
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		if (autonomousCommand != null)
-			autonomousCommand.cancel();
+			 autonomousCommand.cancel();
 	}
 
 	/**

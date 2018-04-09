@@ -16,12 +16,15 @@ public class DriveCommand extends Command
     protected void initialize() 
     {
     		Robot.tankDriveSubsystem.init();
+    		SmartDashboard.putString("tank drive", "init");
     }
 
     protected void execute() 
     {	
     		Robot.tankDriveSubsystem.driveWithJoystick();
     		SmartDashboard.putNumber("joystick1 throttle", OI.joystick1.getThrottle());
+    		SmartDashboard.putString("tank drive", "exec");
+    	
     }
 
     protected boolean isFinished() 

@@ -154,6 +154,14 @@ public class TankDrive extends Subsystem
     {
     		motorL1.set(-speed);
     		motorR1.set(speed);
+    		SmartDashboard.putString("Move method", "active");
+    }
+    
+    public void moveRight(double speed) {
+    	motorR1.set(speed);
+    }
+    public void moveLeft(double speed) {
+    	motorL1.set(-speed);
     }
 	
     public void stop()
