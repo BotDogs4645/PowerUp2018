@@ -1,12 +1,18 @@
 package org.usfirst.frc.team4645.robot;
-import org.usfirst.frc.team4645.robot.subsystems.ClimbingSubsystem;
+import org.usfirst.frc.team4645.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team4645.robot.commands.Autonomous;
+import org.usfirst.frc.team4645.robot.subsystems.ClimbSubsystem;
 import org.usfirst.frc.team4645.robot.subsystems.ColorSensor;
 import org.usfirst.frc.team4645.robot.subsystems.IntakeSystem;
-import org.usfirst.frc.team4645.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team4645.robot.subsystems.Pneumatics;
 import org.usfirst.frc.team4645.robot.subsystems.TankDrive;
 import org.usfirst.frc.team4645.robot.subsystems.UltrasonicSensor;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,17 +29,31 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot 
 {
 	
-	public static final Pneumatics pneumaticsSubsystem= new Pneumatics();
+	//public static final Pneumatics pneumaticsSubsystem= new Pneumatics();
 	public static final TankDrive tankDriveSubsystem = new TankDrive();
 	public static final IntakeSystem kIntakeSystem= new IntakeSystem();
-	public static final ClimbingSubsystem climbingSystem= new ClimbingSubsystem();
+	public static final LiftSubsystem liftSubsystem= new LiftSubsystem();
 	public static final UltrasonicSensor kUltrasonic = new UltrasonicSensor();
 	public static final ColorSensor kColorSensor = new ColorSensor();
-	public static final LiftSubsystem liftSubsystem = new LiftSubsystem();
+	public static final ClimbSubsystem climbingSystem= new ClimbSubsystem();
+	
+	
+	
+	
+	Command  autonomousCommand = new Autonomous();
+	SendableChooser<Command> chooser =new SendableChooser();
+	
 	public static OI oi;
+	
+	
+	UsbCamera powerUpCamera = CameraServer.getInstance().startAutomaticCapture(0);
+	//boolean resolutionSet = powerUpCamera.setResolution(5000, 300);
+	
+	//public static int autonomousDelay;
+	
+	
+	NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
 
-	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -43,8 +63,21 @@ public class Robot extends IterativeRobot
 	public void robotInit() 
 	{
 		oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		
+		
+		
+		/*autoChooser.addDefault("5",5);
+		autoChooser.addObject("0",0);
+		autoChooser.addObject("10",10);
+		
+		
+		SmartDashboard.putData("How long would you like autonomous to delay?", autoChooser);*/
+		chooser.addObject("My Auto", new Autonomous());
 		SmartDashboard.putData("Auto mode", chooser);
+
+
+		
+
 	}
 
 	/**
@@ -62,6 +95,7 @@ public class Robot extends IterativeRobot
 	public void disabledPeriodic() 
 	{
 		Scheduler.getInstance().run();
+		//autonomousDelay=(int) autoChooser.getSelected();
 	}
 
 	/**
@@ -78,9 +112,13 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit() 
 	{
-		autonomousCommand = chooser.getSelected();
+		//autonomousDelay=(int) autoChooser.getSelected();
+		
+				//autonomousCommand = chooser.getSelected();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		
+		
 	}
 
 	/**
@@ -95,12 +133,13 @@ public class Robot extends IterativeRobot
 	@Override
 	public void teleopInit() 
 	{
+		
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		if (autonomousCommand != null)
-			autonomousCommand.cancel();
+			 autonomousCommand.cancel();
 	}
 
 	/**
@@ -110,6 +149,42 @@ public class Robot extends IterativeRobot
 	public void teleopPeriodic() 
 	{
 		Scheduler.getInstance().run();
+		
+		NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+		
+		NetworkTableEntry led = table.getEntry("ledMode");
+		double ledNum = led.getDouble(0);
+		
+		
+		/*NetworkTableEntry tx = table.getEntry("tx");
+		NetworkTableEntry ty = table.getEntry("ty");
+		NetworkTableEntry ta = table.getEntry("ta");
+		NetworkTableEntry tv = table.getEntry("tv");
+		NetworkTableEntry ts = table.getEntry("ts");
+		NetworkTableEntry tl = table.getEntry("tl");
+		
+		double x = tx.getDouble(0);
+		double y = ty.getDouble(0);
+		double area = ta.getDouble(0);
+		double v = tv.getDouble(0);
+		double s = ts.getDouble(0);
+		double l = tl.getDouble(0);
+		
+		SmartDashboard.putNumber("Whether the limelight has any valid targets (0 or 1)",v);
+		SmartDashboard.putNumber("Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)",x);
+		SmartDashboard.putNumber("Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)",y);
+		SmartDashboard.putNumber("Target Area (0% of image to 100% of image)",area);
+		SmartDashboard.putNumber("Skew or rotation (-90 degrees to 0 degrees)",s);
+		SmartDashboard.putNumber("The pipelines latency contribution (ms) Add at least 11ms for image capture latency.",l);*/
+		
+		
+		
+		table.getEntry("ledMode").setNumber(1);
+		SmartDashboard.putNumber("led", ledNum);
+		
+		
+		
+		
 	}
 
 	/**

@@ -12,7 +12,7 @@ public class PneumaticsCommandIn extends Command
 
     public PneumaticsCommandIn() 
     {
-    	   	requires(Robot.pneumaticsSubsystem);
+    	   //	requires(Robot.pneumaticsSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -23,7 +23,7 @@ public class PneumaticsCommandIn extends Command
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    		Robot.pneumaticsSubsystem.in();
+    	//	Robot.pneumaticsSubsystem.in();
     	
     }
 
@@ -43,6 +43,6 @@ public class PneumaticsCommandIn extends Command
     // subsystems is scheduled to run
     protected void interrupted() 
     {
-    		Robot.pneumaticsSubsystem.out();
+    		//Robot.pneumaticsSubsystem.out();
     }
 }

@@ -11,13 +11,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class MoveWithUltrasonic extends Command {
 
 	boolean moveUntil;
-	
-    public MoveWithUltrasonic(boolean pMoveUntil) {
+	int port;
+    public MoveWithUltrasonic(boolean pMoveUntil, int pPort) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.tankDriveSubsystem);
     	requires(Robot.kUltrasonic);
     	moveUntil = pMoveUntil; 
+    	port = pPort;
     }
 
     // Called just before this Command runs the first time
@@ -27,16 +28,16 @@ public class MoveWithUltrasonic extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.tankDriveSubsystem.move(0.3); //Move tank drive at 0.3
-    	SmartDashboard.putNumber("Distance", Robot.kUltrasonic.getDistance());
+    	SmartDashboard.putNumber("Distance", Robot.kUltrasonic.getDistance(port));
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if (moveUntil) {
-    		return (34 >= Robot.kUltrasonic.getDistance()); //Finish when distance is less than 31 cm
+    		return (34 >= Robot.kUltrasonic.getDistance(port)); //Finish when distance is less than 31 cm
     
     	} else {
-    		return (34 < Robot.kUltrasonic.getDistance()); //Finish when distance is greater than 32 cm
+    		return (34 < Robot.kUltrasonic.getDistance(port)); //Finish when distance is greater than 32 cm
     	}
     	//30 cm is the minimum value the ultrasonic sensor can return
     }

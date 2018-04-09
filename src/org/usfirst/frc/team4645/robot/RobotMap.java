@@ -17,25 +17,30 @@ public class RobotMap
 {
 
 //pneumatics
-	public static int leftPistonIn = 1;
-	public static int leftPistonOut = 2;
+	//public static int leftPistonIn = 1;
+	//public static int leftPistonOut = 2;
 
 //tank drive motors
-	public static int left1 = 6; //14
-	public static int left2 = 5; //15
-	public static int left3 = 4; //16
-	public static int right1 = 11;
-	public static int right2 = 12;
-	public static int right3 = 13;
+	public static int left1 = 14; //14
+	public static int left2 = 15; //15
+	public static int left3 = 16; //16
+	public static int right1 = 11;//11
+	public static int right2 = 12;//12
+	public static int right3 = 13;//13
 	
 	
 //intake motors
-	public static int intake1 = 1;	
-	public static int intake2 = 2;	
+	public static int intake1 = 1;//1	
+	public static int intake2 = 2;//	
 	
 
-//climb motors
-	public static int climb1 = 3; //was 3
+//lift motor
+	public static int lift = 10; 
+	
+//lift motor
+	public static int climb1 = 3; 	
+	public static int climb2 = 4; 
+	
 
 //Analog input
 	public static int ultrasonicChannel1 = 1;
