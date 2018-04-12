@@ -33,7 +33,7 @@ public class Autonomous extends CommandGroup {
     	*/
     	
     	
-    	addSequential(new DriveForwardTime(1.25));//drive forward
+    	addSequential(new DriveForwardTime(1.25));//drive forward //1.7
     	
     	//addSequential(new TurnWithTime(0,0, 2));//wait
     	
