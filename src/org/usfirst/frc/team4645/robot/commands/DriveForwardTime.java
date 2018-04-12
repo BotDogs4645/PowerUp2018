@@ -24,7 +24,7 @@ public class DriveForwardTime extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	time.start();
-    	//timeDelay = Robot.autonomousDelay;
+    	//timeDelay = 5;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,7 +45,8 @@ public class DriveForwardTime extends Command {
     	}
     	else 
     	{
-    		Robot.tankDriveSubsystem.move(-.2);
+    	    Robot.tankDriveSubsystem.moveRight(-0.5);
+    	    Robot.tankDriveSubsystem.moveLeft(-0.55);  
     		SmartDashboard.putString("autonomous status","moving");
     	}*/
     }
