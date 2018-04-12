@@ -35,23 +35,10 @@ public class OI
 	Button buttonIntake = new JoystickButton(joystick1,7);
 	Button buttonOuttake = new JoystickButton(joystick1,8);
 	
-
-	
-	Button moveWithEncoders = new JoystickButton(joystick1,1);
-	
-	//moving with encoders
-	Button driveTrain = new JoystickButton(joystick1, 2);
-	
-
-	//Button testButton = new JoystickButton(joystick1, 11);
-	
-	
 	//JOYSTICK2
 	Button liftGround = new JoystickButton(joystick2, 3);
 	Button liftSwitch = new JoystickButton(joystick2, 4);
-	//Button liftScale = new JoystickButton(joystick2, 5);
-	//Button liftHook = new JoystickButton(joystick2,6);
-	
+
 	Button buttonClimbUp = new JoystickButton(joystick2,7);
 	Button buttonClimbDown = new JoystickButton(joystick2,8);	
 	
@@ -67,7 +54,6 @@ public class OI
 	public OI()
 	{
 	//	driveTrainPneumatics.whileHeld(new PneumaticsCommandIn());
-		
 	//	winchPneumatics.whileHeld(new PneumaticsCommandIn());
 		
 		buttonIntake.whileHeld(new IntakeCommand());
@@ -75,19 +61,14 @@ public class OI
 		
 		buttonClimbUp.whenPressed(new Autonomous());
 		
-		//buttonClimbDown.whileHeld(new ClimbCommandDown());
+		
 		
 		//liftUp.whileHeld(new LiftCommandUp());
 		//liftDown.whileHeld(new LiftCommandDown());
 		
-		//testButton.whenPressed(new MoveWithUltrasonic(false));
-		
 		liftGround.whenPressed(new LiftSetTarget(000));
 		liftSwitch.whenPressed(new LiftSetTarget(23000));
-		//liftScale.whenPressed(new PIDLiftCommand(10));
-		//liftHook.whenPressed(new PIDLiftCommand(10));
 		
-		//driveTrain.whenPressed(new MoveWithEncoders(6,6, 0.5));
 		
 	}
 
