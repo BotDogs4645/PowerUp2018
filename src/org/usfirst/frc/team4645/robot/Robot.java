@@ -49,12 +49,7 @@ public class Robot extends IterativeRobot
 	UsbCamera powerUpCamera = CameraServer.getInstance().startAutomaticCapture(0);
 	//boolean resolutionSet = powerUpCamera.setResolution(5000, 300);
 	
-	//public static int autonomousDelay;
 	
-	
-	NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -63,21 +58,8 @@ public class Robot extends IterativeRobot
 	public void robotInit() 
 	{
 		oi = new OI();
-		
-		
-		
-		/*autoChooser.addDefault("5",5);
-		autoChooser.addObject("0",0);
-		autoChooser.addObject("10",10);
-		
-		
-		SmartDashboard.putData("How long would you like autonomous to delay?", autoChooser);*/
 		chooser.addObject("My Auto", new Autonomous());
 		SmartDashboard.putData("Auto mode", chooser);
-
-
-		
-
 	}
 
 	/**
@@ -95,7 +77,6 @@ public class Robot extends IterativeRobot
 	public void disabledPeriodic() 
 	{
 		Scheduler.getInstance().run();
-		//autonomousDelay=(int) autoChooser.getSelected();
 	}
 
 	/**
@@ -112,13 +93,8 @@ public class Robot extends IterativeRobot
 	@Override
 	public void autonomousInit() 
 	{
-		//autonomousDelay=(int) autoChooser.getSelected();
-		
-				//autonomousCommand = chooser.getSelected();
 		if (autonomousCommand != null)
 			autonomousCommand.start();
-		
-		
 	}
 
 	/**
@@ -148,43 +124,7 @@ public class Robot extends IterativeRobot
 	@Override
 	public void teleopPeriodic() 
 	{
-		Scheduler.getInstance().run();
-		
-		NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-		
-		NetworkTableEntry led = table.getEntry("ledMode");
-		double ledNum = led.getDouble(0);
-		
-		
-		/*NetworkTableEntry tx = table.getEntry("tx");
-		NetworkTableEntry ty = table.getEntry("ty");
-		NetworkTableEntry ta = table.getEntry("ta");
-		NetworkTableEntry tv = table.getEntry("tv");
-		NetworkTableEntry ts = table.getEntry("ts");
-		NetworkTableEntry tl = table.getEntry("tl");
-		
-		double x = tx.getDouble(0);
-		double y = ty.getDouble(0);
-		double area = ta.getDouble(0);
-		double v = tv.getDouble(0);
-		double s = ts.getDouble(0);
-		double l = tl.getDouble(0);
-		
-		SmartDashboard.putNumber("Whether the limelight has any valid targets (0 or 1)",v);
-		SmartDashboard.putNumber("Horizontal Offset From Crosshair To Target (-27 degrees to 27 degrees)",x);
-		SmartDashboard.putNumber("Vertical Offset From Crosshair To Target (-20.5 degrees to 20.5 degrees)",y);
-		SmartDashboard.putNumber("Target Area (0% of image to 100% of image)",area);
-		SmartDashboard.putNumber("Skew or rotation (-90 degrees to 0 degrees)",s);
-		SmartDashboard.putNumber("The pipelines latency contribution (ms) Add at least 11ms for image capture latency.",l);*/
-		
-		
-		
-		table.getEntry("ledMode").setNumber(1);
-		SmartDashboard.putNumber("led", ledNum);
-		
-		
-		
-		
+		Scheduler.getInstance().run();	
 	}
 
 	/**
