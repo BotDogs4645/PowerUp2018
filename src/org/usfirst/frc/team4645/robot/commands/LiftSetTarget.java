@@ -37,25 +37,20 @@ public class LiftSetTarget extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     		SmartDashboard.putString("LiftSetTarget ", "executing");
-    		SmartDashboard.putNumber("LiftSetTarget position", height);
-    		//SmartDashboard.putNumber("LiftSetTarget position", height);
+    		SmartDashboard.putNumber("LiftSetTarget position", height); 		
     		
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        //return liftPID.onTarget();
-    	
-    	
     	return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	SmartDashboard.putString("LiftSetTarget ", "end");
-    
     	liftPID.disable();
-    	//add stop?
+    	
     	
     }
  
