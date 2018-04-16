@@ -23,7 +23,6 @@ public class LiftSubsystem extends PIDSubsystem {
 	public LiftSubsystem()
 	{
 		super("lifting", 0.0001 , 0.0000001, 00);
-		//0.0001 , 0.0000001, 00
 		//setContinuous(false);
 		setAbsoluteTolerance(100);
 		
@@ -31,22 +30,11 @@ public class LiftSubsystem extends PIDSubsystem {
 		liftMotor.setSensorPhase(false); // set led green when going positive direction
 		setEncoderPosition(0);
 		
-
-		 
-		 
-		
-		//In pidliftcommand init
-		/*setEncoderPosition(0);
-		getPIDController().setSetpoint(0);
-		getPIDController().enable();*/
-		
 		
 	}
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	//setDefaultCommand(new PIDLiftCommand());
+
     }
     
     public void init()
