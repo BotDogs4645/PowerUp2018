@@ -23,6 +23,7 @@ public class DriveCommand extends Command
     {	
     		Robot.tankDriveSubsystem.driveWithJoystick();
     		SmartDashboard.putNumber("joystick1 throttle", OI.joystick1.getThrottle());
+    		SmartDashboard.putNumber("joystick1 x-axis", OI.joystick1.getX());
     		SmartDashboard.putString("tank drive", "exec");
     	
     }
