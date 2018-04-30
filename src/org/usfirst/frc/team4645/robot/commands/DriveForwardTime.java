@@ -33,7 +33,7 @@ public class DriveForwardTime extends Command {
     	//SmartDashboard.putNumber("autonomous delay seconds", timeDelay);
     	SmartDashboard.putNumber("current time", time.get());
     	Robot.tankDriveSubsystem.moveRight(-0.5);
-    	Robot.tankDriveSubsystem.moveLeft(-0.55);
+    	Robot.tankDriveSubsystem.moveLeft(-0.5);
     	
     	
     	
