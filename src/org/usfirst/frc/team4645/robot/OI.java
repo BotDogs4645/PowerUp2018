@@ -15,6 +15,7 @@ import org.usfirst.frc.team4645.robot.commands.IntakeCommand;
 import org.usfirst.frc.team4645.robot.commands.MoveWithUltrasonic;
 import org.usfirst.frc.team4645.robot.commands.OuttakeCommand;
 import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandIn;
+import org.usfirst.frc.team4645.robot.commands.PneumaticsCommandOut;
 
 
 
@@ -40,10 +41,12 @@ public class OI
 	public OI()
 	{
 		button.whileHeld(new PneumaticsCommandIn());
+		
 		buttonIntake.whileHeld(new IntakeCommand());
 		buttonOuttake.whileHeld(new OuttakeCommand());
 		buttonClimbUp.whileHeld(new ClimbCommandUp());
 		buttonClimbDown.whileHeld(new ClimbCommandDown());
 		testButton.whenPressed(new MoveWithUltrasonic(false));
+		
 	}
 }
